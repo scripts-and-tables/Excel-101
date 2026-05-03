@@ -1,0 +1,55 @@
+{
+  "title": "Module 4 quiz — Visualizing sales data",
+  "questions": [
+    {
+      "question": "Which chart type is best for showing how monthly revenue changes over a year?",
+      "options": ["Pie chart", "Stacked bar", "Line chart", "Doughnut chart"],
+      "answer": 2,
+      "explanation": "Line charts are designed for ordered time series. Pie/doughnut are for share-of-total at a single point in time and don't show change well."
+    },
+    {
+      "question": "You want to show revenue (in dollars) and units sold (in counts) on the same chart. Best choice?",
+      "options": [
+        "Two separate line charts side by side",
+        "A combo chart with units on a secondary axis",
+        "A stacked bar chart",
+        "A 3D pie chart"
+      ],
+      "answer": 1,
+      "explanation": "Combo charts let two series share the same x-axis but use different y-axis scales — essential when the numbers are on very different magnitudes."
+    },
+    {
+      "question": "What does a color scale conditional format do?",
+      "options": [
+        "Changes the font colour of headers",
+        "Colours cells along a gradient based on their value (low → high)",
+        "Hides cells below a threshold",
+        "Locks the cell colour to its category"
+      ],
+      "answer": 1,
+      "explanation": "Color scales (Home → Conditional Formatting → Color Scales) turn a numeric grid into a heat map — a quick way to spot hot and cold spots."
+    },
+    {
+      "question": "What is a sparkline?",
+      "options": [
+        "A type of chart that lives inside a single cell",
+        "A line chart with extra data labels",
+        "A 3D version of a bar chart",
+        "A formula that returns chart data"
+      ],
+      "answer": 0,
+      "explanation": "Sparklines are tiny in-cell charts — perfect for showing a trend per row in a long table without taking up dashboard space."
+    },
+    {
+      "question": "When is a horizontal bar chart better than a vertical column chart?",
+      "options": [
+        "Always — bars are more modern",
+        "When you have many categories with long labels",
+        "Only for percentages",
+        "Never — columns are always preferred"
+      ],
+      "answer": 1,
+      "explanation": "Long category labels (like full customer names) read more easily next to horizontal bars. Vertical columns crowd labels at angles."
+    }
+  ]
+}

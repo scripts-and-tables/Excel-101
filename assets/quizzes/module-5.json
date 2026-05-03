@@ -1,0 +1,66 @@
+{
+  "title": "Module 5 quiz — Validation, what-if & wrap-up",
+  "questions": [
+    {
+      "question": "How do you create a drop-down list in a cell?",
+      "options": [
+        "Insert → Drop-down",
+        "Data → Data Validation → Allow: List",
+        "Home → Conditional Formatting → List",
+        "Formulas → Define Name → List"
+      ],
+      "answer": 1,
+      "explanation": "Data Validation with Allow: List is the standard way. The source can be a typed list (Red,Green,Blue) or a range reference."
+    },
+    {
+      "question": "Goal Seek is most useful when you want to:",
+      "options": [
+        "Sort data automatically",
+        "Find the input value that produces a specific output",
+        "Validate that a cell value is within a range",
+        "Build a pivot table from a goal"
+      ],
+      "answer": 1,
+      "explanation": "Goal Seek answers 'what input gives me this exact output?' — for example, what discount % yields a 30% margin."
+    },
+    {
+      "question": "What is the main benefit of named ranges?",
+      "options": [
+        "They make the file smaller",
+        "They make formulas more readable (XLOOKUP(SelectedProduct, ...) instead of XLOOKUP($B$4, ...))",
+        "They run faster than cell references",
+        "They lock cells from edits"
+      ],
+      "answer": 1,
+      "explanation": "Named ranges add semantic meaning to formulas. Anyone reading the workbook can understand intent without tracing cell coordinates."
+    },
+    {
+      "question": "Which shortcut toggles a cell reference between A1 / $A$1 / A$1 / $A1?",
+      "options": ["F2", "F4", "F9", "Ctrl + R"],
+      "answer": 1,
+      "explanation": "F4 cycles through reference modes when editing a formula — a huge time-saver when copying formulas across rows or columns."
+    },
+    {
+      "question": "Where does the Name Manager live?",
+      "options": [
+        "Home tab",
+        "Insert tab",
+        "Formulas tab (or Ctrl + F3)",
+        "Data tab"
+      ],
+      "answer": 2,
+      "explanation": "Formulas → Name Manager (or press Ctrl + F3). It lists every named range, named formula, and named table in the workbook."
+    },
+    {
+      "question": "Your capstone dashboard should show revenue figures for which order status?",
+      "options": [
+        "All statuses including Refunded and Cancelled",
+        "Only Closed Won",
+        "Only Pending",
+        "All statuses except Closed Won"
+      ],
+      "answer": 1,
+      "explanation": "The brief is explicit: revenue figures count Closed Won only. Refunds get their own KPI (refund rate)."
+    }
+  ]
+}

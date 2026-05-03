@@ -1,0 +1,77 @@
+{
+  "title": "Module 2 quiz — Sales-power formulas",
+  "questions": [
+    {
+      "question": "Which is the safest default match type for XLOOKUP?",
+      "options": ["Approximate match", "Exact match (no extra argument needed)", "Wildcard match", "Reverse match"],
+      "answer": 1,
+      "explanation": "XLOOKUP defaults to exact match — that's one of its key advantages over VLOOKUP, where the default is approximate."
+    },
+    {
+      "question": "Which formula returns the total revenue for the West region only?",
+      "options": [
+        "=SUMIF(Sales[Revenue], \"West\")",
+        "=SUMIFS(Sales[Region], \"West\", Sales[Revenue])",
+        "=SUMIFS(Sales[Revenue], Sales[Region], \"West\")",
+        "=SUM(Sales[Revenue], Sales[Region]=\"West\")"
+      ],
+      "answer": 2,
+      "explanation": "SUMIFS syntax: sum_range first, then pairs of (criteria_range, criteria). SUMIF (no S) takes them in a different order — easy to confuse."
+    },
+    {
+      "question": "Which advantage does XLOOKUP have over VLOOKUP?",
+      "options": [
+        "It can look to the left of the lookup column",
+        "It has a built-in if_not_found argument",
+        "It survives column inserts in the lookup table",
+        "All of the above"
+      ],
+      "answer": 3,
+      "explanation": "All three are real advantages of XLOOKUP. That's why it has become the modern default for new workbooks."
+    },
+    {
+      "question": "What does =EOMONTH(TODAY(), 0) return?",
+      "options": [
+        "Today's date",
+        "The first day of the current month",
+        "The last day of the current month",
+        "The last day of the previous month"
+      ],
+      "answer": 2,
+      "explanation": "EOMONTH(date, 0) returns the last day of the month containing date. Use -1 for previous month, +1 for next month."
+    },
+    {
+      "question": "What does =UNIQUE(Sales[Region]) return in modern Excel?",
+      "options": [
+        "The first region only",
+        "An error — UNIQUE is not a real function",
+        "A spilled list of each distinct region, once",
+        "A count of distinct regions"
+      ],
+      "answer": 2,
+      "explanation": "UNIQUE is a dynamic array function (Excel 2021+ / 365). It returns each distinct value once, spilling the result into adjacent cells."
+    },
+    {
+      "question": "Which IFS formula correctly tags revenue as Big / Mid / Small?",
+      "options": [
+        "=IFS(R>5000,\"Big\";R>1000,\"Mid\";\"Small\")",
+        "=IFS(R>5000,\"Big\",R>1000,\"Mid\",TRUE,\"Small\")",
+        "=IFS(R>5000,R>1000,TRUE,\"Big\",\"Mid\",\"Small\")",
+        "=IFS(\"Big\",R>5000,\"Mid\",R>1000,\"Small\",TRUE)"
+      ],
+      "answer": 1,
+      "explanation": "IFS expects (test, value, test, value, ...). End with TRUE as the catch-all condition for the default value."
+    },
+    {
+      "question": "Why is VLOOKUP without FALSE as the last argument considered dangerous?",
+      "options": [
+        "It always returns #N/A",
+        "It does an approximate match silently and may return wrong values",
+        "It only works on sorted ascending columns even when correct",
+        "It is too slow on large datasets"
+      ],
+      "answer": 1,
+      "explanation": "Without FALSE (or 0), VLOOKUP defaults to approximate match, which assumes the lookup column is sorted ascending. If it isn't, you get wrong answers — silently."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "title": "Module 3 quiz — Pivot tables & pivot charts",
+  "questions": [
+    {
+      "question": "Which pivot drop zone do you put SalesRep in to list each rep down the side?",
+      "options": ["Filters", "Columns", "Rows", "Values"],
+      "answer": 2,
+      "explanation": "Categorical fields you want listed down the side go in Rows. Time periods often go in Columns."
+    },
+    {
+      "question": "How do you change a pivot's Sum of Revenue into a percentage of the grand total?",
+      "options": [
+        "Edit the source data with /TOTAL formulas",
+        "Right-click the value → Show Values As → % of Grand Total",
+        "Manually divide each cell after creating the pivot",
+        "Use a Calculated Field with =VALUE/GRAND"
+      ],
+      "answer": 1,
+      "explanation": "Show Values As lets you swap raw sums for % of total, % of parent, running totals, differences, and more — without changing the source data."
+    },
+    {
+      "question": "When new rows are added to the underlying Sales table, what happens to the pivot?",
+      "options": [
+        "It updates immediately",
+        "It updates after you save the file",
+        "Nothing — you must Refresh the pivot to see new rows",
+        "It permanently breaks and must be rebuilt"
+      ],
+      "answer": 2,
+      "explanation": "Pivots cache their data and don't auto-refresh. Right-click → Refresh, or Data → Refresh All. If the source is an Excel Table, the range expands automatically on refresh."
+    },
+    {
+      "question": "What does a Slicer do?",
+      "options": [
+        "Splits a pivot into multiple sheets",
+        "Acts as a clickable filter that can control one or several pivots at once",
+        "Cuts the data range in half for performance",
+        "Deletes filtered-out rows from the source"
+      ],
+      "answer": 1,
+      "explanation": "Slicers are visual filter buttons. Use Report Connections to wire one slicer to multiple pivots — the basis of any interactive dashboard."
+    },
+    {
+      "question": "You want to show revenue by year → quarter → month. What feature do you use?",
+      "options": [
+        "Calculated Fields",
+        "Group on the date field",
+        "Manual TEXT() helper columns",
+        "PivotChart only"
+      ],
+      "answer": 1,
+      "explanation": "Right-click any date in the Rows area → Group → tick Months, Quarters, Years. Excel adds them as drillable levels."
+    },
+    {
+      "question": "When is a Calculated Field most reliable?",
+      "options": [
+        "For row-by-row ratios like margin %",
+        "For simple sums and differences of summed values (e.g. Revenue - Cost)",
+        "For fields based on text functions",
+        "For fields using XLOOKUP"
+      ],
+      "answer": 1,
+      "explanation": "Calculated Fields operate on already-summed values, so they handle additive math well. For ratios, it's usually safer to add a helper column to the source table."
+    }
+  ]
+}

@@ -11,12 +11,13 @@ enabled (instructions below).
 ## What's in this repo
 
 ```
-├── index.md, lessons/, quizzes/   # Jekyll site content
-├── _config.yml, Gemfile           # Just the Docs theme config
-├── assets/
-│   ├── css/quiz.css               # Quiz styling
-│   ├── js/quiz.js                 # Vanilla quiz engine
-│   └── quizzes/*.json             # Quiz questions (one per module)
+├── docs/                          # Jekyll site (GitHub Pages source)
+│   ├── _config.yml, Gemfile       # Just the Docs theme config
+│   ├── index.md, lessons/, quizzes/
+│   └── assets/
+│       ├── css/quiz.css           # Quiz styling
+│       ├── js/quiz.js             # Vanilla quiz engine
+│       └── quizzes/*.json         # Quiz questions (one per module)
 ├── files/
 │   ├── source/sales_data.csv      # Synthetic dataset (generated)
 │   ├── working/                   # Starter .xlsx per module + capstone
@@ -57,22 +58,24 @@ Both scripts are deterministic — re-running produces the same output.
 ## Running the site locally
 
 ```bash
+cd docs
 bundle install
 bundle exec jekyll serve
 ```
 
 Then open <http://localhost:4000/Excel-101/>.
 
-## Enabling GitHub Pages
+## GitHub Pages configuration
 
-1. Push the `main` branch to GitHub.
-2. Repo → **Settings → Pages**.
-3. **Source**: Deploy from a branch.
-4. **Branch**: `main`, folder: `/ (root)`.
-5. Save. The site will be live at `https://<owner>.github.io/Excel-101/`
+The repo is set up to publish from the `docs/` folder:
+
+1. Repo → **Settings → Pages**.
+2. **Source**: Deploy from a branch.
+3. **Branch**: `main`, folder: **`/docs`**.
+4. Save. The site is live at `https://<owner>.github.io/Excel-101/`
    within a minute or two.
 
-The `_config.yml` already sets `baseurl: "/Excel-101"` to match.
+The `docs/_config.yml` already sets `baseurl: "/Excel-101"` to match.
 
 ## Data & licensing
 

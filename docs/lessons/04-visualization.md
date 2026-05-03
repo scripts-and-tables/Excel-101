@@ -1,20 +1,10 @@
 ---
-title: "Module 4 — Visualizing sales data"
-parent: Lessons
-nav_order: 4
+layout: lesson
+title: "Visualizing sales data"
+short_title: "Visualization"
+subtitle: "Pick the right chart, master conditional formatting, and use sparklines for trend signals."
+module: 4
 ---
-
-# Module 4 — Visualizing sales data
-{: .no_toc }
-
-⏱ 30 minutes &middot; [Working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-4.xlsx) &middot; [Solution file](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-4.xlsx) &middot; [Quiz](../quizzes/module-4)
-
-<details open markdown="block">
-  <summary>Contents</summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 A chart's job is to make a number understandable in less than a second. Pick the wrong chart and you've made the data harder to read, not easier.
 

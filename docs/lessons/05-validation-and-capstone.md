@@ -1,20 +1,10 @@
 ---
-title: "Module 5 — Validation, what-if & capstone"
-parent: Lessons
-nav_order: 5
+layout: lesson
+title: "Validation, what-if & capstone"
+short_title: "Capstone"
+subtitle: "Lock down inputs, run quick what-if analysis, and build the capstone dashboard."
+module: 5
 ---
-
-# Module 5 — Validation, what-if & capstone
-{: .no_toc }
-
-⏱ 40 minutes &middot; [Working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-5.xlsx) &middot; [Solution file](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-5.xlsx) &middot; [Capstone working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/capstone.xlsx) &middot; [Capstone solution](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/capstone.xlsx) &middot; [Quiz](../quizzes/module-5)
-
-<details open markdown="block">
-  <summary>Contents</summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 The final module covers the small touches that make a workbook trustworthy and reusable — and then you put everything together in a capstone dashboard.
 

@@ -1,15 +1,12 @@
 ---
+layout: lesson
 title: "Module 5 quiz"
-parent: Quizzes
-nav_order: 5
+short_title: "Quiz"
+subtitle: "Six final questions on data validation, named ranges, Goal Seek, and the capstone brief."
+module: 5
+is_quiz: true
 ---
 
-# Module 5 quiz — Validation, what-if & wrap-up
+You need 70% to pass. Everything is scored in your browser — nothing is sent to a server.
 
-Six final questions on data validation, named ranges, Goal Seek, shortcuts, and the capstone brief.
-
-<link rel="stylesheet" href="{{ '/assets/css/quiz.css' | relative_url }}">
 <div data-quiz="{{ '/assets/quizzes/module-5.json' | relative_url }}">Loading quiz…</div>
-<script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
-
-← [Back to Module 5 lesson](../lessons/05-validation-and-capstone) &middot; [Course home](../)

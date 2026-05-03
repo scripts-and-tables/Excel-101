@@ -1,15 +1,12 @@
 ---
+layout: lesson
 title: "Module 3 quiz"
-parent: Quizzes
-nav_order: 3
+short_title: "Quiz"
+subtitle: "Six questions on building, refreshing, and slicing pivot tables."
+module: 3
+is_quiz: true
 ---
 
-# Module 3 quiz — Pivot tables & pivot charts
+You need 70% to pass. Everything is scored in your browser — nothing is sent to a server.
 
-Six questions on building, refreshing, and slicing pivot tables.
-
-<link rel="stylesheet" href="{{ '/assets/css/quiz.css' | relative_url }}">
 <div data-quiz="{{ '/assets/quizzes/module-3.json' | relative_url }}">Loading quiz…</div>
-<script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
-
-← [Back to Module 3 lesson](../lessons/03-pivot-tables) &middot; [Next: Module 4 lesson](../lessons/04-visualization) →

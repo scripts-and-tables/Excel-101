@@ -1,0 +1,88 @@
+---
+layout: default
+---
+{%- assign current_module = nil -%}
+{%- for m in site.data.course.modules -%}
+  {%- if m.number == page.module -%}{%- assign current_module = m -%}{%- endif -%}
+{%- endfor -%}
+
+{%- assign prev_module = nil -%}
+{%- assign next_module = nil -%}
+{%- for m in site.data.course.modules -%}
+  {%- if m.number == page.module | minus: 1 -%}{%- assign prev_module = m -%}{%- endif -%}
+  {%- if m.number == page.module | plus: 1 -%}{%- assign next_module = m -%}{%- endif -%}
+{%- endfor -%}
+
+<div class="lesson-shell">
+  <div class="container lesson-shell__inner">
+    {% include sidebar.html %}
+    <article class="lesson">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="{{ '/' | relative_url }}">Course</a>
+        <span aria-hidden="true">›</span>
+        {% if current_module %}
+          <a href="{{ '/lessons/' | append: current_module.slug | relative_url }}">Module {{ current_module.number }}</a>
+          <span aria-hidden="true">›</span>
+        {% endif %}
+        <span>{{ page.short_title | default: page.title }}</span>
+      </nav>
+
+      <header class="lesson__header">
+        {% if current_module %}
+          <span class="lesson__eyebrow">Module {{ current_module.number }} &middot; {{ current_module.duration }}</span>
+        {% endif %}
+        <h1 class="lesson__title">{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="lesson__subtitle">{{ page.subtitle }}</p>{% endif %}
+        {% if page.is_quiz != true and current_module %}
+          <div class="lesson__resources">
+            <a class="resource-pill" href="https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-{{ current_module.number }}.xlsx">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Working file
+            </a>
+            <a class="resource-pill" href="https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-{{ current_module.number }}.xlsx">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Solution file
+            </a>
+            <a class="resource-pill resource-pill--accent" href="{{ '/quizzes/module-' | append: current_module.number | relative_url }}">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Take the quiz
+            </a>
+          </div>
+        {% endif %}
+        {% if page.is_quiz == true and current_module %}
+          <div class="lesson__resources">
+            <a class="resource-pill" href="{{ '/lessons/' | append: current_module.slug | relative_url }}">
+              ← Back to lesson
+            </a>
+          </div>
+        {% endif %}
+      </header>
+
+      <div class="lesson__body markdown">
+        {{ content }}
+      </div>
+
+      <nav class="lesson__pager" aria-label="Module pagination">
+        {% if prev_module %}
+          <a class="lesson__pager-link lesson__pager-link--prev" href="{{ '/lessons/' | append: prev_module.slug | relative_url }}">
+            <span class="lesson__pager-direction">← Previous</span>
+            <span class="lesson__pager-title">Module {{ prev_module.number }}: {{ prev_module.title }}</span>
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+        {% if next_module %}
+          <a class="lesson__pager-link lesson__pager-link--next" href="{{ '/lessons/' | append: next_module.slug | relative_url }}">
+            <span class="lesson__pager-direction">Next →</span>
+            <span class="lesson__pager-title">Module {{ next_module.number }}: {{ next_module.title }}</span>
+          </a>
+        {% else %}
+          <a class="lesson__pager-link lesson__pager-link--next" href="{{ '/' | relative_url }}">
+            <span class="lesson__pager-direction">Done →</span>
+            <span class="lesson__pager-title">Course home</span>
+          </a>
+        {% endif %}
+      </nav>
+    </article>
+  </div>
+</div>

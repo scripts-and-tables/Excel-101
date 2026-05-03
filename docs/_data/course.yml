@@ -1,0 +1,77 @@
+title: "Excel 101 for Sales"
+subtitle: "Master modern Excel for sales workflows in 4 hours."
+description: >-
+  A self-paced, hands-on course that takes intermediate sales users to confident
+  Excel power-users — modern formulas, pivot tables, dashboards. Microsoft 365 / Excel 2021+.
+duration: "4 hours"
+level: "Intermediate"
+modules_count: 5
+quiz_count: 30
+files_count: 12
+
+learning_outcomes:
+  - "Structure messy sales exports into clean, filterable Excel Tables."
+  - "Use modern formulas — XLOOKUP, SUMIFS, IFS, dynamic arrays — with confidence."
+  - "Build pivot tables and pivot charts that answer real sales questions in minutes."
+  - "Visualize performance with the right chart, conditional formatting, and sparklines."
+  - "Run quick what-if analysis and assemble a one-page sales dashboard."
+
+modules:
+  - number: 1
+    slug: 01-tables-and-data
+    title: "Working with sales data"
+    duration: "35 min"
+    summary: "Excel Tables, structured references, sorting, filtering, and basic data cleanup."
+    topics:
+      - "Excel Tables (Ctrl+T)"
+      - "TRIM, PROPER, dedupe"
+      - "AutoFilter & multi-sort"
+    icon: "table"
+
+  - number: 2
+    slug: 02-formulas
+    title: "Sales-power formulas"
+    duration: "75 min"
+    summary: "Modern logical, lookup, and aggregation formulas — including XLOOKUP and dynamic arrays."
+    topics:
+      - "IF / IFS / IFERROR"
+      - "XLOOKUP & INDEX/MATCH"
+      - "SUMIFS, COUNTIFS, MAXIFS"
+      - "UNIQUE, SORT, FILTER"
+    icon: "formula"
+
+  - number: 3
+    slug: 03-pivot-tables
+    title: "Pivot tables & pivot charts"
+    duration: "60 min"
+    summary: "Build, group, slice, and refresh pivot tables — the fastest way to summarise sales data."
+    topics:
+      - "Rows / Columns / Values"
+      - "Group dates by year / quarter"
+      - "Calculated fields"
+      - "Slicers & timelines"
+    icon: "pivot"
+
+  - number: 4
+    slug: 04-visualization
+    title: "Visualizing sales data"
+    duration: "30 min"
+    summary: "Choose the right chart, master conditional formatting, and use sparklines for trend signals."
+    topics:
+      - "Chart selection guide"
+      - "Combo charts (revenue + units)"
+      - "Color scales & data bars"
+      - "Sparklines"
+    icon: "chart"
+
+  - number: 5
+    slug: 05-validation-and-capstone
+    title: "Validation, what-if & capstone"
+    duration: "40 min"
+    summary: "Lock down inputs with validation, run quick what-if analysis, and build the capstone dashboard."
+    topics:
+      - "Data validation drop-downs"
+      - "Goal Seek"
+      - "Named ranges"
+      - "Capstone dashboard"
+    icon: "target"

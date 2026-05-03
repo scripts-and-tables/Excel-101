@@ -1,0 +1,21 @@
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-brand" href="{{ '/' | relative_url }}">
+      <span class="site-brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="32" height="32" rx="7" fill="currentColor"/>
+          <path d="M9 9 L23 23 M23 9 L9 23" stroke="white" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="site-brand__text">{{ site.title }}</span>
+    </a>
+    <nav class="site-nav">
+      <a class="site-nav__link" href="{{ '/' | relative_url }}#modules">Modules</a>
+      <a class="site-nav__link" href="{{ '/lessons/01-tables-and-data' | relative_url }}">Start course</a>
+      <a class="site-nav__link site-nav__link--external" href="{{ site.github_repo }}" rel="noopener">
+        GitHub
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>
+      </a>
+    </nav>
+  </div>
+</header>

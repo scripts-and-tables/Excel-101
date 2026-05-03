@@ -1,20 +1,10 @@
 ---
-title: "Module 3 — Pivot tables & pivot charts"
-parent: Lessons
-nav_order: 3
+layout: lesson
+title: "Pivot tables & pivot charts"
+short_title: "Pivot tables"
+subtitle: "The fastest way to slice a sales dataset — by region, period, rep, or product."
+module: 3
 ---
-
-# Module 3 — Pivot tables & pivot charts
-{: .no_toc }
-
-⏱ 60 minutes &middot; [Working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-3.xlsx) &middot; [Solution file](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-3.xlsx) &middot; [Quiz](../quizzes/module-3)
-
-<details open markdown="block">
-  <summary>Contents</summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 Pivot tables are the fastest way to slice a sales dataset by region, period, rep, or product. Once you can build one, you can answer most "what's our revenue by X" questions in under a minute.
 

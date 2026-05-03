@@ -1,36 +1,23 @@
 title: Excel 101 for Sales
 description: A self-paced 4-hour Excel course for sales professionals. Modern formulas, pivot tables, dashboards — practical, no fluff.
-remote_theme: just-the-docs/just-the-docs
+author: scripts-and-tables
 url: ""
 baseurl: "/Excel-101"
+github_repo: "https://github.com/scripts-and-tables/excel-101"
 
-color_scheme: light
-search_enabled: true
-heading_anchors: true
-
-aux_links:
-  "View on GitHub":
-    - "https://github.com/scripts-and-tables/excel-101"
-
-footer_content: "Excel 101 for Sales &middot; MIT licensed &middot; Built with Just the Docs"
-
-nav_external_links:
-  - title: GitHub repository
-    url: https://github.com/scripts-and-tables/excel-101
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  toc_levels: "2..3"
 
 plugins:
-  - jekyll-remote-theme
   - jekyll-seo-tag
+  - jekyll-sitemap
 
 exclude:
-  - scripts/
   - Gemfile
   - Gemfile.lock
-  - README.md
   - vendor/
-
-defaults:
-  - scope:
-      path: ""
-    values:
-      layout: default
+  - README.md
+  - .sass-cache/

@@ -1,0 +1,32 @@
+<aside class="course-sidebar">
+  <div class="course-sidebar__header">
+    <span class="course-sidebar__eyebrow">Course outline</span>
+    <h2 class="course-sidebar__title">{{ site.data.course.title }}</h2>
+    <p class="course-sidebar__meta">{{ site.data.course.duration }} &middot; {{ site.data.course.level }}</p>
+  </div>
+  <ol class="course-sidebar__list">
+    {% for m in site.data.course.modules %}
+      {% assign is_current = false %}
+      {% if page.module == m.number %}{% assign is_current = true %}{% endif %}
+      <li class="course-sidebar__item {% if is_current %}is-current{% endif %}">
+        <a class="course-sidebar__link" href="{{ '/lessons/' | append: m.slug | relative_url }}">
+          <span class="course-sidebar__num">M{{ m.number }}</span>
+          <span class="course-sidebar__label">
+            <span class="course-sidebar__module-title">{{ m.title }}</span>
+            <span class="course-sidebar__duration">{{ m.duration }}</span>
+          </span>
+        </a>
+        {% if is_current %}
+          <ul class="course-sidebar__sub">
+            <li {% if page.is_quiz != true %}class="is-current"{% endif %}>
+              <a href="{{ '/lessons/' | append: m.slug | relative_url }}">Lesson</a>
+            </li>
+            <li {% if page.is_quiz == true %}class="is-current"{% endif %}>
+              <a href="{{ '/quizzes/module-' | append: m.number | relative_url }}">Quiz</a>
+            </li>
+          </ul>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</aside>

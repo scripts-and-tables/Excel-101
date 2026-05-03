@@ -1,20 +1,10 @@
 ---
-title: "Module 2 — Sales-power formulas"
-parent: Lessons
-nav_order: 2
+layout: lesson
+title: "Sales-power formulas"
+short_title: "Formulas"
+subtitle: "Logical, lookup, conditional aggregation, date, text, and dynamic-array formulas."
+module: 2
 ---
-
-# Module 2 — Sales-power formulas
-{: .no_toc }
-
-⏱ 75 minutes &middot; [Working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-2.xlsx) &middot; [Solution file](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-2.xlsx) &middot; [Quiz](../quizzes/module-2)
-
-<details open markdown="block">
-  <summary>Contents</summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 This is the longest module — and the highest-leverage one. Master these formulas and 80% of your day-to-day sales reporting becomes a five-minute job.
 

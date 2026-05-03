@@ -1,20 +1,10 @@
 ---
-title: "Module 1 — Working with sales data"
-parent: Lessons
-nav_order: 1
+layout: lesson
+title: "Working with sales data"
+short_title: "Tables & data"
+subtitle: "Tables, structured references, sorting, filtering, and basic cleanup."
+module: 1
 ---
-
-# Module 1 — Working with sales data
-{: .no_toc }
-
-⏱ 35 minutes &middot; [Working file](https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-1.xlsx) &middot; [Solution file](https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-1.xlsx) &middot; [Quiz](../quizzes/module-1)
-
-<details open markdown="block">
-  <summary>Contents</summary>
-  {: .text-delta }
-- TOC
-{:toc}
-</details>
 
 ## Why this matters for sales
 

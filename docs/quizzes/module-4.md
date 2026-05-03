@@ -1,15 +1,12 @@
 ---
+layout: lesson
 title: "Module 4 quiz"
-parent: Quizzes
-nav_order: 4
+short_title: "Quiz"
+subtitle: "Five questions on chart selection, conditional formatting, and sparklines."
+module: 4
+is_quiz: true
 ---
 
-# Module 4 quiz — Visualizing sales data
+You need 70% to pass. Everything is scored in your browser — nothing is sent to a server.
 
-Five questions on chart selection, conditional formatting, and sparklines.
-
-<link rel="stylesheet" href="{{ '/assets/css/quiz.css' | relative_url }}">
 <div data-quiz="{{ '/assets/quizzes/module-4.json' | relative_url }}">Loading quiz…</div>
-<script src="{{ '/assets/js/quiz.js' | relative_url }}"></script>
-
-← [Back to Module 4 lesson](../lessons/04-visualization) &middot; [Next: Module 5 lesson](../lessons/05-validation-and-capstone) →

@@ -1,66 +1,61 @@
 {
-  "title": "Module 5 quiz — Validation, what-if & wrap-up",
+  "title": "Stage 5 quiz — Present & capstone",
   "questions": [
     {
-      "question": "How do you create a drop-down list in a cell?",
-      "options": [
-        "Insert → Drop-down",
-        "Data → Data Validation → Allow: List",
-        "Home → Conditional Formatting → List",
-        "Formulas → Define Name → List"
-      ],
-      "answer": 1,
-      "explanation": "Data Validation with Allow: List is the standard way. The source can be a typed list (Red,Green,Blue) or a range reference."
+      "question": "On a one-page summary, where should the headline KPI (e.g. total revenue) go?",
+      "options": ["Top-left — where eyes land first", "Bottom-right", "Centre, in a chart", "It doesn't matter"],
+      "answer": 0,
+      "explanation": "Readers start top-left. Put the single most important number there, big and formatted."
     },
     {
-      "question": "Goal Seek is most useful when you want to:",
+      "question": "Which conditional-formatting option instantly flags repeated customer names or order IDs?",
       "options": [
-        "Sort data automatically",
-        "Find the input value that produces a specific output",
-        "Validate that a cell value is within a range",
-        "Build a pivot table from a goal"
+        "Highlight Cells Rules → Duplicate Values",
+        "Color Scales",
+        "Data Bars",
+        "Icon Sets"
       ],
-      "answer": 1,
-      "explanation": "Goal Seek answers 'what input gives me this exact output?' — for example, what discount % yields a 30% margin."
+      "answer": 0,
+      "explanation": "Duplicate Values highlights repeats — a fast second check after Stage 1's Remove Duplicates."
     },
     {
-      "question": "What is the main benefit of named ranges?",
-      "options": [
-        "They make the file smaller",
-        "They make formulas more readable (XLOOKUP(SelectedProduct, ...) instead of XLOOKUP($B$4, ...))",
-        "They run faster than cell references",
-        "They lock cells from edits"
-      ],
-      "answer": 1,
-      "explanation": "Named ranges add semantic meaning to formulas. Anyone reading the workbook can understand intent without tracing cell coordinates."
+      "question": "To turn a Region × Quarter grid into a heat map, you use…",
+      "options": ["Color Scales", "A pivot chart", "Data Bars", "A slicer"],
+      "answer": 0,
+      "explanation": "Color Scales shade cells by value, making a grid readable at a glance as a heat map."
     },
     {
-      "question": "Which shortcut toggles a cell reference between A1 / $A$1 / A$1 / $A1?",
-      "options": ["F2", "F4", "F9", "Ctrl + R"],
-      "answer": 1,
-      "explanation": "F4 cycles through reference modes when editing a formula — a huge time-saver when copying formulas across rows or columns."
+      "question": "You want every refunded order's whole row to turn red. Which conditional-formatting rule?",
+      "options": [
+        "New Rule → Use a formula → =$L2=\"Refunded\" → red fill",
+        "Top/Bottom Rules → Below Average",
+        "Data Bars on the Status column",
+        "Highlight Cells → Greater Than"
+      ],
+      "answer": 0,
+      "explanation": "A formula rule referencing the locked Status column ($L2) applies the format to the entire row."
     },
     {
-      "question": "Where does the Name Manager live?",
+      "question": "Which custom number format displays 1234567 as \"$1.2M\"?",
       "options": [
-        "Home tab",
-        "Insert tab",
-        "Formulas tab (or Ctrl + F3)",
-        "Data tab"
+        "[>=1000000]\"$\"#,##0,,\"M\";[>=1000]\"$\"#,##0,\"K\";\"$\"#,##0",
+        "\"$\"#,##0.00",
+        "0.0%",
+        "General"
       ],
-      "answer": 2,
-      "explanation": "Formulas → Name Manager (or press Ctrl + F3). It lists every named range, named formula, and named table in the workbook."
+      "answer": 0,
+      "explanation": "Each comma after the format scales the displayed number by a thousand; the conditions pick M, K, or plain."
     },
     {
-      "question": "Your capstone dashboard should show revenue figures for which order status?",
+      "question": "In the capstone, why prefer a live formula (e.g. SUMIFS) over typing the number you read off a pivot?",
       "options": [
-        "All statuses including Refunded and Cancelled",
-        "Only Closed Won",
-        "Only Pending",
-        "All statuses except Closed Won"
+        "It looks more professional",
+        "The answer stays correct if the data changes or is refreshed",
+        "Typed numbers aren't allowed",
+        "Formulas calculate faster than reading"
       ],
       "answer": 1,
-      "explanation": "The brief is explicit: revenue figures count Closed Won only. Refunds get their own KPI (refund rate)."
+      "explanation": "A live formula recalculates when the data updates; a hard-typed number silently goes stale."
     }
   ]
 }

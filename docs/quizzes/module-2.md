@@ -1,8 +1,8 @@
 ---
 layout: lesson
-title: "Module 2 quiz"
+title: "Stage 2 quiz"
 short_title: "Quiz"
-subtitle: "Seven questions on logical, lookup, conditional aggregation, date, and dynamic-array functions."
+subtitle: "Six questions on enriching data with VLOOKUP — exact match, the six failure modes, IFERROR, XLOOKUP note."
 module: 2
 is_quiz: true
 ---

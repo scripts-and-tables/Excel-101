@@ -1,8 +1,8 @@
 ---
 layout: lesson
-title: "Module 4 quiz"
+title: "Stage 4 quiz"
 short_title: "Quiz"
-subtitle: "Five questions on chart selection, conditional formatting, and sparklines."
+subtitle: "Six questions on PivotTables, grouping, slicers, the rep leaderboard and refresh."
 module: 4
 is_quiz: true
 ---

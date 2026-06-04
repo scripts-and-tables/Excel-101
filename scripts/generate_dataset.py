@@ -1,9 +1,13 @@
-"""Generate a synthetic sales dataset used throughout the course.
+"""Generate the synthetic sales datasets used throughout the course.
 
-Output: ../files/source/sales_data.csv
+Outputs:
+- ../files/source/sales_data.csv  — the main order-line dataset
+- ../files/source/reps.csv        — a small Sales Rep reference table
+                                     (lookup target for the VLOOKUP module + capstone)
 
-Deterministic — running it again produces the same file.
-Includes a few deliberate "dirty" rows so Module 1 cleanup exercises have something to clean.
+Deterministic — running it again produces the same files.
+Includes a few deliberate "dirty" rows so the Module 1 cleanup exercises have
+something to clean.
 """
 
 from __future__ import annotations
@@ -26,6 +30,15 @@ SALES_REPS = {
     "East":    ["Sofia Lindqvist", "Daniel Park", "Amaya Suzuki"],
     "West":    ["Carlos Mendes", "Hannah Cohen", "Jin Wei"],
     "Central": ["Olivia Brown", "Ravi Patel", "Eva Schmidt"],
+}
+
+# Each region rolls up to one sales manager — used to build the Reps lookup table.
+REGION_MANAGERS = {
+    "North":   "Helena Vogt",
+    "South":   "Diego Alvarez",
+    "East":    "Mei Tanaka",
+    "West":    "Frank Boateng",
+    "Central": "Nadia Petrova",
 }
 
 CATEGORIES = {
@@ -75,6 +88,30 @@ def random_date(rng: random.Random) -> date:
     return START_DATE + timedelta(days=rng.randint(0, delta))
 
 
+def make_reps(rng: random.Random) -> list[dict]:
+    """Build the Sales Rep reference table: rep -> region, manager, annual quota.
+
+    This is the lookup target for the VLOOKUP module and the capstone
+    (quota-attainment KPI). Quotas are deterministic, in round thousands.
+    """
+    reps: list[dict] = []
+    for region, names in SALES_REPS.items():
+        for name in names:
+            quota = rng.choice([180_000, 200_000, 220_000, 240_000, 260_000, 280_000])
+            # Commission rate is a simple tier — the lookup target for the
+            # Stage 3 commission calc (rate VLOOKUP'd from this table).
+            rate = rng.choice([0.04, 0.05, 0.06, 0.07, 0.08])
+            reps.append({
+                "SalesRep": name,
+                "Region": region,
+                "Manager": REGION_MANAGERS[region],
+                "AnnualQuota": quota,
+                "CommissionRate": rate,
+            })
+    reps.sort(key=lambda r: r["SalesRep"])
+    return reps
+
+
 def make_customers(rng: random.Random, n: int = 80) -> list[str]:
     customers: set[str] = set()
     while len(customers) < n:
@@ -84,6 +121,7 @@ def make_customers(rng: random.Random, n: int = 80) -> list[str]:
 
 def main() -> None:
     rng = random.Random(SEED)
+    reps = make_reps(rng)
     customers = make_customers(rng)
 
     rows: list[dict] = []
@@ -136,7 +174,7 @@ def main() -> None:
     # Sort by date for nicer presentation
     rows.sort(key=lambda r: r["OrderDate"])
 
-    out_path = Path(__file__).resolve().parent.parent / "files" / "source" / "sales_data.csv"
+    out_path = Path(__file__).resolve().parent.parent / "docs" / "files" / "source" / "sales_data.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
     fieldnames = ["OrderID", "OrderDate", "Region", "SalesRep", "Customer",
                   "Product", "Category", "UnitPrice", "Quantity", "Discount",
@@ -147,6 +185,16 @@ def main() -> None:
         writer.writerows(rows)
 
     print(f"Wrote {len(rows)} rows to {out_path}")
+
+    # Reps reference table (lookup target for the VLOOKUP module + capstone)
+    reps_path = out_path.parent / "reps.csv"
+    rep_fields = ["SalesRep", "Region", "Manager", "AnnualQuota", "CommissionRate"]
+    with reps_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=rep_fields)
+        writer.writeheader()
+        writer.writerows(reps)
+
+    print(f"Wrote {len(reps)} reps to {reps_path}")
 
 
 if __name__ == "__main__":

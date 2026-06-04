@@ -1,55 +1,71 @@
 {
-  "title": "Module 4 quiz — Visualizing sales data",
+  "title": "Stage 4 quiz — Pivot & rank",
   "questions": [
     {
-      "question": "Which chart type is best for showing how monthly revenue changes over a year?",
-      "options": ["Pie chart", "Stacked bar", "Line chart", "Doughnut chart"],
-      "answer": 2,
-      "explanation": "Line charts are designed for ordered time series. Pie/doughnut are for share-of-total at a single point in time and don't show change well."
-    },
-    {
-      "question": "You want to show revenue (in dollars) and units sold (in counts) on the same chart. Best choice?",
+      "question": "To total revenue by region, which fields go where in a PivotTable?",
       "options": [
-        "Two separate line charts side by side",
-        "A combo chart with units on a secondary axis",
-        "A stacked bar chart",
-        "A 3D pie chart"
-      ],
-      "answer": 1,
-      "explanation": "Combo charts let two series share the same x-axis but use different y-axis scales — essential when the numbers are on very different magnitudes."
-    },
-    {
-      "question": "What does a color scale conditional format do?",
-      "options": [
-        "Changes the font colour of headers",
-        "Colours cells along a gradient based on their value (low → high)",
-        "Hides cells below a threshold",
-        "Locks the cell colour to its category"
-      ],
-      "answer": 1,
-      "explanation": "Color scales (Home → Conditional Formatting → Color Scales) turn a numeric grid into a heat map — a quick way to spot hot and cold spots."
-    },
-    {
-      "question": "What is a sparkline?",
-      "options": [
-        "A type of chart that lives inside a single cell",
-        "A line chart with extra data labels",
-        "A 3D version of a bar chart",
-        "A formula that returns chart data"
+        "Region → Rows, Revenue → Values",
+        "Region → Values, Revenue → Rows",
+        "Region → Filters, Revenue → Columns",
+        "Both into Values"
       ],
       "answer": 0,
-      "explanation": "Sparklines are tiny in-cell charts — perfect for showing a trend per row in a long table without taking up dashboard space."
+      "explanation": "Categories you list down the side go in Rows; the numbers you summarise go in Values."
     },
     {
-      "question": "When is a horizontal bar chart better than a vertical column chart?",
+      "question": "How do you turn a column of order dates into months and quarters in a pivot?",
       "options": [
-        "Always — bars are more modern",
-        "When you have many categories with long labels",
-        "Only for percentages",
-        "Never — columns are always preferred"
+        "Right-click a date → Group → tick Months/Quarters/Years",
+        "Sort the dates",
+        "Use the TEXT function first",
+        "Drag the date into Filters"
       ],
-      "answer": 1,
-      "explanation": "Long category labels (like full customer names) read more easily next to horizontal bars. Vertical columns crowd labels at angles."
+      "answer": 0,
+      "explanation": "Right-click any date in the pivot → Group rolls up by Year/Quarter/Month. It needs real dates (Stage 1)."
+    },
+    {
+      "question": "Which feature shows each region's share of total revenue as a percentage?",
+      "options": [
+        "Value Field Settings → Show Values As → % of Grand Total",
+        "Conditional formatting",
+        "A slicer",
+        "Number Format → Percent only"
+      ],
+      "answer": 0,
+      "explanation": "Show Values As → % of Grand Total converts the sum into a percentage of the whole."
+    },
+    {
+      "question": "How do you make one slicer control several PivotTables at once?",
+      "options": [
+        "Right-click the slicer → Report Connections → tick the pivots",
+        "Copy the slicer onto each pivot",
+        "Group the pivots",
+        "It's not possible"
+      ],
+      "answer": 0,
+      "explanation": "Report Connections links one slicer to multiple pivots — one click filters them all. The core trick behind a simple dashboard."
+    },
+    {
+      "question": "To build a Top-5 rep leaderboard from a pivot of rep revenue, you…",
+      "options": [
+        "Right-click a rep → Filter → Top 10 → set to 5, then sort Largest to Smallest",
+        "Delete every rep below 5th",
+        "Use VLOOKUP",
+        "Add a slicer for each rep"
+      ],
+      "answer": 0,
+      "explanation": "Value Filter → Top 10 (set to 5) plus a Largest-to-Smallest sort gives a clean top-5 leaderboard."
+    },
+    {
+      "question": "You added new orders to the Sales table but the pivot hasn't changed. What do you do?",
+      "options": [
+        "Right-click the pivot → Refresh (or Data → Refresh All)",
+        "Rebuild the pivot from scratch",
+        "Re-sort the data",
+        "Save and reopen the file"
+      ],
+      "answer": 0,
+      "explanation": "Pivots cache their data — Refresh pulls in the latest. Because Sales is a Table, new rows are included automatically on refresh."
     }
   ]
 }

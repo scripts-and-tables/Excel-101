@@ -1,46 +1,46 @@
 {
-  "title": "Module 1 quiz — Working with sales data",
+  "title": "Stage 1 quiz — Receive & clean",
   "questions": [
     {
       "question": "What keyboard shortcut converts a selected range into an Excel Table?",
       "options": ["Ctrl + L", "Ctrl + T", "Ctrl + Shift + T", "Ctrl + Alt + T"],
       "answer": 1,
-      "explanation": "Ctrl + T opens the Create Table dialog. (Ctrl + L does the same on some systems but Ctrl + T is the canonical shortcut.)"
+      "explanation": "Ctrl + T opens the Create Table dialog — giving you auto-expanding ranges, structured references, filter buttons and banded rows."
     },
     {
-      "question": "Which formula removes leading and trailing spaces from a cell?",
+      "question": "Which function removes leading and trailing spaces (and collapses internal double spaces)?",
       "options": ["=CLEAN(A2)", "=STRIP(A2)", "=TRIM(A2)", "=COMPACT(A2)"],
       "answer": 2,
-      "explanation": "TRIM removes leading/trailing spaces and collapses internal multiple spaces to single spaces. CLEAN removes non-printing characters."
+      "explanation": "TRIM handles spaces. CLEAN removes non-printing characters like line breaks and tabs."
     },
     {
-      "question": "Which structured reference correctly refers to the Revenue column of a table called Sales?",
-      "options": ["Sales!Revenue", "Sales.Revenue", "Sales[Revenue]", "Sales(Revenue)"],
-      "answer": 2,
-      "explanation": "Excel structured references use square brackets: TableName[ColumnName]."
+      "question": "An export has invisible line breaks and tab characters inside cells. Which function strips those out?",
+      "options": ["=TRIM(A2)", "=CLEAN(A2)", "=PROPER(A2)", "=VALUE(A2)"],
+      "answer": 1,
+      "explanation": "CLEAN removes non-printable characters. A common combo is =TRIM(CLEAN(A2))."
     },
     {
-      "question": "Where do you find Remove Duplicates in modern Excel?",
-      "options": ["Home tab", "Insert tab", "Data tab", "Formulas tab"],
-      "answer": 2,
-      "explanation": "Data → Remove Duplicates. You can pick which columns to compare when deciding what counts as a duplicate."
-    },
-    {
-      "question": "After applying an AutoFilter, what happens if you copy the visible rows and paste them?",
+      "question": "A column of numbers won't SUM and the values are left-aligned with a green triangle. What fixes it?",
       "options": [
-        "All rows (visible and hidden) are pasted",
-        "Only the visible rows are pasted",
-        "The filter is cleared and all rows are pasted",
-        "Nothing — Excel blocks the operation"
+        "They're negative — use ABS()",
+        "They're stored as text — use VALUE() or Convert to Number",
+        "They're rounded — use ROUND()",
+        "The column is too narrow — widen it"
       ],
       "answer": 1,
-      "explanation": "Copying from a filtered table copies only the visible rows. This is one of the main reasons to use AutoFilter."
+      "explanation": "Left-aligned numbers with a warning triangle are text. VALUE() converts them back (or use the ⚠️ menu → Convert to Number)."
     },
     {
-      "question": "You have NORTH and North in your Region column. Which formula standardises both to North?",
-      "options": ["=UPPER(A2)", "=LOWER(A2)", "=PROPER(A2)", "=TEXT(A2,\"Title\")"],
-      "answer": 2,
-      "explanation": "PROPER capitalises the first letter of each word and lowercases the rest. UPPER would give NORTH; LOWER would give north."
+      "question": "A date like \"2024-03-15\" is left-aligned and can't be grouped by month. Which function converts it to a real date?",
+      "options": ["=DATE(A2)", "=DATEVALUE(A2)", "=TEXT(A2,\"date\")", "=TODAY(A2)"],
+      "answer": 1,
+      "explanation": "DATEVALUE turns a text date into a real Excel date. You'll need real dates to group by month/quarter in Stage 4."
+    },
+    {
+      "question": "An order ID is \"ORD-2024-0042\". Which formula pulls out just the year, \"2024\"?",
+      "options": ["=LEFT(A2,4)", "=MID(A2,5,4)", "=RIGHT(A2,4)", "=FIND(\"2024\",A2)"],
+      "answer": 1,
+      "explanation": "MID(text, start, length) extracts from the middle — here 4 characters starting at position 5. LEFT would give \"ORD-\"; RIGHT would give \"0042\"."
     }
   ]
 }

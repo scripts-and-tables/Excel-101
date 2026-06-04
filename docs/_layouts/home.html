@@ -9,7 +9,7 @@ layout: default
       <p class="hero__subtitle">{{ site.data.course.subtitle }}</p>
       <p class="hero__lede">{{ site.data.course.description }}</p>
       <div class="hero__actions">
-        <a class="btn btn--primary" href="{{ '/lessons/01-tables-and-data' | relative_url }}">
+        <a class="btn btn--primary" href="{{ '/lessons/01-receive-clean' | relative_url }}">
           Start the course
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m13 5 7 7-7 7"/></svg>
         </a>
@@ -32,8 +32,8 @@ layout: default
         <div class="hero__card-row"><span>Central</span><span>$118K</span><span>156</span><span class="bar bar--35"></span></div>
       </div>
       <div class="hero__card hero__card--2">
-        <span class="hero__card-label">XLOOKUP</span>
-        <code>=XLOOKUP(C2, Sales[Product], Sales[Price])</code>
+        <span class="hero__card-label">SUMIFS</span>
+        <code>=SUMIFS(Sales[Revenue], Sales[Region], "West")</code>
       </div>
     </div>
   </div>
@@ -58,7 +58,7 @@ layout: default
 <section class="modules" id="modules">
   <div class="container">
     <h2 class="section-title">Course modules</h2>
-    <p class="section-subtitle">Five focused modules. Roughly four hours end-to-end. Each ends with a quiz and a downloadable practice file.</p>
+    <p class="section-subtitle">Five stages of one sales-analysis workflow — about 5 hours end-to-end, following a single dataset from raw export to finished one-pager. Each ends with a quiz and a downloadable practice file, capped by a hands-on capstone.</p>
     <div class="module-grid">
       {% for m in site.data.course.modules %}
       <article class="module-card">
@@ -88,14 +88,14 @@ layout: default
       <ol class="howto__steps">
         <li><strong>Download</strong> the working file linked at the top of each module.</li>
         <li><strong>Read &amp; do</strong> — open the file in Excel and try every example as you go.</li>
-        <li><strong>Quiz</strong> — take the 5–7 question check at the end. Instant feedback in your browser.</li>
+        <li><strong>Quiz</strong> — take the short check at the end. Instant feedback in your browser.</li>
         <li><strong>Compare</strong> with the solution file when you're done.</li>
-        <li><strong>Capstone</strong> — after Module 5, build the dashboard from scratch.</li>
+        <li><strong>Capstone</strong> — run the whole workflow on a fresh file and answer the VP's 11 questions.</li>
       </ol>
     </div>
     <div class="howto__cta">
-      <p>Targeted at <strong>Microsoft 365 / Excel 2021+</strong>. No macros, no Power Query — just the 80% of Excel you'll actually use day to day.</p>
-      <a class="btn btn--primary" href="{{ '/lessons/01-tables-and-data' | relative_url }}">Begin Module 1</a>
+      <p>Works in <strong>Excel 2016 and up</strong> (VLOOKUP-first; XLOOKUP shown as a modern note). No macros, no Power Query, no dynamic-array gymnastics — just the 80% of Excel a sales team actually uses.</p>
+      <a class="btn btn--primary" href="{{ '/lessons/01-receive-clean' | relative_url }}">Begin Module 1</a>
     </div>
   </div>
 </section>

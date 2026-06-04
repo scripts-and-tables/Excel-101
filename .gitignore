@@ -1,0 +1,23 @@
+# Original internal/source materials — may contain real (confidential) data.
+# Everything the course ships is synthetic; this folder is reference only and
+# must never be committed or published.
+__scratch/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Jekyll build output / local gems
+docs/_site/
+docs/.jekyll-cache/
+docs/.jekyll-metadata
+docs/vendor/
+.bundle/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.tmp
+scripts/_*.py

@@ -1,8 +1,8 @@
 ---
 layout: lesson
-title: "Module 1 quiz"
+title: "Stage 1 quiz"
 short_title: "Quiz"
-subtitle: "Six short questions on tables, structured references, and basic cleanup."
+subtitle: "Six questions on Tables and cleaning a raw export — TRIM, CLEAN, VALUE, DATEVALUE, text functions."
 module: 1
 is_quiz: true
 ---

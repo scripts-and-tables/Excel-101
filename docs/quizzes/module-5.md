@@ -1,8 +1,8 @@
 ---
 layout: lesson
-title: "Module 5 quiz"
+title: "Stage 5 quiz"
 short_title: "Quiz"
-subtitle: "Six final questions on data validation, named ranges, Goal Seek, and the capstone brief."
+subtitle: "Six final questions on the one-pager — KPIs, charts, conditional formatting, custom formats and the capstone."
 module: 5
 is_quiz: true
 ---

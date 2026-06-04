@@ -1,77 +1,61 @@
 {
-  "title": "Module 2 quiz — Sales-power formulas",
+  "title": "Stage 2 quiz — Structure & enrich",
   "questions": [
     {
-      "question": "Which is the safest default match type for XLOOKUP?",
-      "options": ["Approximate match", "Exact match (no extra argument needed)", "Wildcard match", "Reverse match"],
+      "question": "What should the 4th argument of VLOOKUP almost always be?",
+      "options": ["TRUE (approximate match)", "FALSE (exact match)", "0.5", "Left blank"],
       "answer": 1,
-      "explanation": "XLOOKUP defaults to exact match — that's one of its key advantages over VLOOKUP, where the default is approximate."
+      "explanation": "FALSE forces an exact match. TRUE (or omitting it) does an approximate match that silently returns wrong answers on unsorted data."
     },
     {
-      "question": "Which formula returns the total revenue for the West region only?",
+      "question": "VLOOKUP matches your lookup value against which part of the table?",
+      "options": ["Any column you name", "The first (leftmost) column", "The last column", "The header row"],
+      "answer": 1,
+      "explanation": "VLOOKUP only searches the first column and returns a value from a column to its right — it can't look left."
+    },
+    {
+      "question": "=VLOOKUP([@SalesRep], Reps, 5, FALSE) returns…",
       "options": [
-        "=SUMIF(Sales[Revenue], \"West\")",
-        "=SUMIFS(Sales[Region], \"West\", Sales[Revenue])",
-        "=SUMIFS(Sales[Revenue], Sales[Region], \"West\")",
-        "=SUM(Sales[Revenue], Sales[Region]=\"West\")"
+        "The 5th column of Reps (Commission Rate) for the matching rep",
+        "The 5th rep in the list",
+        "The rep in row 5",
+        "An error — you can't use a table name"
       ],
-      "answer": 2,
-      "explanation": "SUMIFS syntax: sum_range first, then pairs of (criteria_range, criteria). SUMIF (no S) takes them in a different order — easy to confuse."
+      "answer": 0,
+      "explanation": "The 5 is the column index — it returns column 5 (CommissionRate) of Reps for the row whose first column matches the rep."
     },
     {
-      "question": "Which advantage does XLOOKUP have over VLOOKUP?",
+      "question": "Two cells look identical but VLOOKUP returns #N/A. What's the most common cause?",
       "options": [
-        "It can look to the left of the lookup column",
-        "It has a built-in if_not_found argument",
-        "It survives column inserts in the lookup table",
-        "All of the above"
+        "One value is a number stored as text, or has trailing spaces",
+        "The table is too big",
+        "VLOOKUP doesn't support text",
+        "You need to press F9"
       ],
-      "answer": 3,
-      "explanation": "All three are real advantages of XLOOKUP. That's why it has become the modern default for new workbooks."
+      "answer": 0,
+      "explanation": "Type mismatches (text vs number) and invisible trailing spaces are the classic #N/A causes. Fix with VALUE and TRIM (Stage 1)."
     },
     {
-      "question": "What does =EOMONTH(TODAY(), 0) return?",
+      "question": "How do you turn a VLOOKUP #N/A into a friendly label like 'unknown'?",
       "options": [
-        "Today's date",
-        "The first day of the current month",
-        "The last day of the current month",
-        "The last day of the previous month"
+        "=IFERROR(VLOOKUP(…), \"unknown\")",
+        "=ISNA(VLOOKUP(…))",
+        "=VLOOKUP(…, \"unknown\")",
+        "=CLEAN(VLOOKUP(…))"
       ],
-      "answer": 2,
-      "explanation": "EOMONTH(date, 0) returns the last day of the month containing date. Use -1 for previous month, +1 for next month."
+      "answer": 0,
+      "explanation": "IFERROR(value, fallback) returns the fallback when the formula errors, keeping your sheet clean."
     },
     {
-      "question": "What does =UNIQUE(Sales[Region]) return in modern Excel?",
+      "question": "Why does this course teach VLOOKUP as the main lookup, with XLOOKUP only as a note?",
       "options": [
-        "The first region only",
-        "An error — UNIQUE is not a real function",
-        "A spilled list of each distinct region, once",
-        "A count of distinct regions"
-      ],
-      "answer": 2,
-      "explanation": "UNIQUE is a dynamic array function (Excel 2021+ / 365). It returns each distinct value once, spilling the result into adjacent cells."
-    },
-    {
-      "question": "Which IFS formula correctly tags revenue as Big / Mid / Small?",
-      "options": [
-        "=IFS(R>5000,\"Big\";R>1000,\"Mid\";\"Small\")",
-        "=IFS(R>5000,\"Big\",R>1000,\"Mid\",TRUE,\"Small\")",
-        "=IFS(R>5000,R>1000,TRUE,\"Big\",\"Mid\",\"Small\")",
-        "=IFS(\"Big\",R>5000,\"Mid\",R>1000,\"Small\",TRUE)"
+        "XLOOKUP is being removed from Excel",
+        "VLOOKUP is in legacy files everywhere and works in older Excel; XLOOKUP needs Excel 365/2021+",
+        "XLOOKUP can't do exact matches",
+        "VLOOKUP is faster on every dataset"
       ],
       "answer": 1,
-      "explanation": "IFS expects (test, value, test, value, ...). End with TRUE as the catch-all condition for the default value."
-    },
-    {
-      "question": "Why is VLOOKUP without FALSE as the last argument considered dangerous?",
-      "options": [
-        "It always returns #N/A",
-        "It does an approximate match silently and may return wrong values",
-        "It only works on sorted ascending columns even when correct",
-        "It is too slow on large datasets"
-      ],
-      "answer": 1,
-      "explanation": "Without FALSE (or 0), VLOOKUP defaults to approximate match, which assumes the lookup column is sorted ascending. If it isn't, you get wrong answers — silently."
+      "explanation": "You'll inherit VLOOKUP constantly, and XLOOKUP doesn't exist before Excel 2021. Know VLOOKUP cold; use XLOOKUP when everyone's on a modern version."
     }
   ]
 }

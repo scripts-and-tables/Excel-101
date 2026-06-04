@@ -1004,3 +1004,41 @@ img { max-width: 100%; }
 }
 
 /* Recap / final paragraphs sit naturally without extra rules */
+
+/* ---------------------------------------------------------------- Downloads */
+.downloads { padding: 56px 0 80px; }
+.downloads__notice {
+  background: var(--surface, #f6faf6);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--brand, #2e7d32);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 20px 0 28px;
+  font-size: 0.95rem;
+}
+.downloads__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 32px;
+}
+.downloads__table th,
+.downloads__table td {
+  text-align: left;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.downloads__table thead th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted, #5a6b5a);
+}
+.downloads__table a,
+.downloads__list a {
+  font-weight: 600;
+  text-decoration: none;
+}
+.downloads__table a:hover,
+.downloads__list a:hover { text-decoration: underline; }
+.downloads__list { line-height: 1.9; margin: 8px 0 28px; padding-left: 20px; }
+.downloads__back { margin-top: 24px; }

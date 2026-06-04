@@ -1,8 +1,8 @@
 ---
 layout: lesson
-title: "Module 3 quiz"
+title: "Stage 3 quiz"
 short_title: "Quiz"
-subtitle: "Six questions on building, refreshing, and slicing pivot tables."
+subtitle: "Six questions on AutoFilter, SUBTOTAL, SUMIFS/COUNTIFS/AVERAGEIFS, KPIs and commission."
 module: 3
 is_quiz: true
 ---

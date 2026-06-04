@@ -35,11 +35,11 @@ layout: default
         {% if page.subtitle %}<p class="lesson__subtitle">{{ page.subtitle }}</p>{% endif %}
         {% if page.is_quiz != true and current_module %}
           <div class="lesson__resources">
-            <a class="resource-pill" href="https://github.com/scripts-and-tables/excel-101/raw/main/files/working/module-{{ current_module.number }}.xlsx">
+            <a class="resource-pill" download href="{{ '/files/working/module-' | append: current_module.number | append: '.xlsx' | relative_url }}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Working file
             </a>
-            <a class="resource-pill" href="https://github.com/scripts-and-tables/excel-101/raw/main/files/solutions/module-{{ current_module.number }}.xlsx">
+            <a class="resource-pill" download href="{{ '/files/solutions/module-' | append: current_module.number | append: '.xlsx' | relative_url }}">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
               Solution file
             </a>

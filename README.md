@@ -1,8 +1,10 @@
-# Excel 101 for Sales
+# Excel for Sales
 
-A self-paced **4-hour** Excel course built for sales professionals. Lessons,
-downloadable working/solution `.xlsx` files, and per-module quizzes with
-instant in-browser scoring.
+A practical **~4.5-hour** Excel course for sales professionals who **receive sales
+data and need to analyse it themselves** — clean the export, filter and subtotal,
+summarise with `SUMIFS`, look up with `VLOOKUP`, and pivot it into answers.
+Lessons, downloadable working/solution `.xlsx` files, per-module quizzes with
+instant in-browser scoring, and a question-driven capstone.
 
 The course site is published as a Jekyll site on GitHub Pages — see the
 [live site](https://scripts-and-tables.github.io/Excel-101/) once Pages is
@@ -11,41 +13,58 @@ enabled (instructions below).
 ## What's in this repo
 
 ```
-├── docs/                          # Jekyll site (GitHub Pages source)
-│   ├── _config.yml, Gemfile       # Just the Docs theme config
-│   ├── index.md, lessons/, quizzes/
-│   └── assets/
-│       ├── css/quiz.css           # Quiz styling
-│       ├── js/quiz.js             # Vanilla quiz engine
-│       └── quizzes/*.json         # Quiz questions (one per module)
-├── files/
-│   ├── source/sales_data.csv      # Synthetic dataset (generated)
-│   ├── working/                   # Starter .xlsx per module + capstone
-│   └── solutions/                 # Completed .xlsx per module + capstone
-└── scripts/
-    ├── generate_dataset.py        # Builds the synthetic dataset
-    ├── build_workbooks.py         # Builds all working/solution .xlsx files
-    └── requirements.txt           # openpyxl
+├── docs/                          # Jekyll site = everything GitHub Pages serves
+│   ├── _config.yml, Gemfile       # theme config
+│   ├── index.md, downloads.md     # home + downloads page
+│   ├── lessons/, quizzes/
+│   ├── assets/
+│   │   ├── css/, js/quiz.js        # styling + the vanilla quiz engine
+│   │   └── quizzes/*.json          # quiz questions (one per stage)
+│   └── files/                      # served for download on the Pages site
+│       ├── source/*.csv            # synthetic order-line + reps datasets (generated)
+│       ├── working/                # starter .xlsx per stage + capstone
+│       └── solutions/              # completed .xlsx per stage + capstone
+├── scripts/
+│   ├── generate_dataset.py        # builds the synthetic datasets (into docs/files/source)
+│   ├── build_workbooks.py         # builds all working/solution .xlsx (into docs/files)
+│   └── requirements.txt           # openpyxl
+└── __scratch/                     # original internal materials — gitignored, never published
 ```
 
-## Course outline (≈ 4 hours)
+All practice files live under `docs/files/` so the published site serves them directly —
+see the **Downloads** page (`/downloads/`) or the buttons at the top of each lesson.
 
-| # | Module | Time |
-|---|--------|------|
-| 1 | Working with sales data | 35 min |
-| 2 | Sales-power formulas (XLOOKUP, SUMIFS, dynamic arrays, …) | 75 min |
-| 3 | Pivot tables & pivot charts | 60 min |
-| 4 | Visualizing sales data | 30 min |
-| 5 | Validation, what-if & capstone dashboard | 40 min |
+## Who it's for
 
-Targeted at **Microsoft 365 / Excel 2021+**. Macros and Power Query are out
-of scope — the course is intentionally focused on the ~80% of Excel that
-salespeople actually use day-to-day.
+Intermediate sales users — account managers, reps, sales ops — who already know
+their way around a spreadsheet and regularly get sales exports from a CRM/ERP.
+The scope is deliberately the ~80% of Excel a sales team uses day to day. Out of
+scope (analyst territory): macros/VBA, Power Query, Power Pivot, and dynamic
+arrays. `VLOOKUP` is taught as the primary lookup; `XLOOKUP` appears only as a
+modern note, so the material works in **Excel 2016 and up**.
+
+## Course outline (≈ 5 hours)
+
+The course follows **one sales export through the real analysis workflow** — each
+module is a *stage* of that process, not a disconnected topic:
+
+| # | Stage | Time |
+|---|-------|------|
+| 1 | **Receive & clean** — Table, TRIM/CLEAN, Find&Replace, VALUE/DATEVALUE, text functions, Paste Special, dedupe, formats | 50 min |
+| 2 | **Structure & enrich** — VLOOKUP manager/quota/commission rate from a reference table; the six failure modes; XLOOKUP note | 45 min |
+| 3 | **Explore & summarize** — AutoFilter, Status Bar, SUBTOTAL; SUMIFS/COUNTIFS/AVERAGEIFS; KPIs; commission | 60 min |
+| 4 | **Pivot & rank** — PivotTables, grouping, slicers, the rep leaderboard | 40 min |
+| 5 | **Present & capstone** — KPI one-pager, one chart, conditional formatting, then the capstone | 70 min |
+
+Add two short breaks and it covers a comfortable instructor-led, practice-heavy
+half day (~5 hours). The capstone is the assessment: a *fresh* file the learner
+runs through the whole workflow, answering ~11 business questions that produce
+real sales KPIs (win rate, AOV, refund rate, quota attainment, commission).
 
 ## Regenerating the data and workbooks
 
-The `.xlsx` files in `files/working/` and `files/solutions/` are checked in,
-so contributors don't need Python to use the course. To regenerate them:
+The `.xlsx` files in `docs/files/working/` and `docs/files/solutions/` are
+checked in, so contributors don't need Python to use the course. To regenerate them:
 
 ```bash
 pip install -r scripts/requirements.txt
@@ -77,8 +96,13 @@ The repo is set up to publish from the `docs/` folder:
 
 The `docs/_config.yml` already sets `baseurl: "/Excel-101"` to match.
 
-## Data & licensing
+## Data & confidentiality
 
-- All sales data is **fully synthetic** — generated by `generate_dataset.py`
-  from a fixed seed. No customer names, products, or amounts are real.
+- **All course data is fully synthetic** — generated by `generate_dataset.py`
+  from a fixed seed. Customers (`Acme`, `Globex`, …), products, reps, managers and
+  amounts are invented. Nothing real or confidential ships in this repo.
+- The `__scratch/` folder holds the original internal training materials, which may
+  contain real data. It is **gitignored** and is never committed or published.
+- If you'd rather use an open dataset, any public sales CSV (e.g. a Kaggle
+  "sales"/"superstore" set) drops into `docs/files/source/` with matching columns.
 - Course content is MIT licensed (see `LICENSE`).

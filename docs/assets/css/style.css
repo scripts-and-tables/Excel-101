@@ -1042,3 +1042,37 @@ img { max-width: 100%; }
 .downloads__list a:hover { text-decoration: underline; }
 .downloads__list { line-height: 1.9; margin: 8px 0 28px; padding-left: 20px; }
 .downloads__back { margin-top: 24px; }
+
+/* ------------------------------------------------- Mobile hardening */
+/* The lesson article is a grid item; grid items default to min-width:auto,
+   so a long code line or wide table stretches the column past the screen.
+   min-width:0 lets it shrink and the inner overflow-x:auto take over. */
+.lesson,
+.lesson__body { min-width: 0; }
+.lesson__body img { max-width: 100%; height: auto; }
+.markdown pre { max-width: 100%; }           /* scrolls via its own overflow-x */
+.breadcrumb { flex-wrap: wrap; }
+
+/* Inline code wraps instead of overflowing; fenced code blocks still scroll. */
+.markdown :not(pre) > code {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  .lesson-shell__inner { padding: 20px 16px 48px; gap: 24px; }
+
+  /* Wide tables scroll horizontally instead of running off the screen. */
+  .markdown table,
+  .downloads__table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .markdown table thead th,
+  .downloads__table thead th { white-space: nowrap; }
+
+  /* Stack the prev/next pager. */
+  .lesson__pager { grid-template-columns: 1fr; }
+}

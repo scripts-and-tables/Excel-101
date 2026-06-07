@@ -1,4 +1,4 @@
-<header class="site-header">
+<header class="site-header" id="siteHeader">
   <div class="container site-header__inner">
     <a class="site-brand" href="{{ '/' | relative_url }}">
       <span class="site-brand__mark" aria-hidden="true">
@@ -9,10 +9,35 @@
       </span>
       <span class="site-brand__text">{{ site.title }}</span>
     </a>
-    <nav class="site-nav">
-      <a class="site-nav__link" href="{{ '/' | relative_url }}#modules">Modules</a>
-      <a class="site-nav__link" href="{{ '/lessons/01-receive-clean' | relative_url }}">Start course</a>
+
+    <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="siteNav">
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+      <span class="nav-toggle__bar"></span>
+    </button>
+
+    <nav class="site-nav" id="siteNav" aria-label="Main">
+      <a class="site-nav__link" href="{{ '/' | relative_url }}">Home</a>
+
+      <div class="nav-dd">
+        <button class="site-nav__link nav-dd__btn" type="button" aria-expanded="false" aria-controls="navModules">
+          Modules
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <ul class="nav-dd__menu" id="navModules">
+          {% for m in site.data.course.modules %}
+          <li>
+            <a href="{{ '/lessons/' | append: m.slug | relative_url }}">
+              <span class="nav-dd__num">M{{ m.number }}</span>
+              <span class="nav-dd__label">{{ m.title }}<span class="nav-dd__dur">{{ m.duration }}</span></span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
       <a class="site-nav__link" href="{{ '/downloads/' | relative_url }}">Downloads</a>
+      <a class="site-nav__link" href="{{ '/downloads/' | relative_url }}#for-trainers">For trainers</a>
       <a class="site-nav__link site-nav__link--external" href="{{ site.github_repo }}" rel="noopener">
         GitHub
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg>

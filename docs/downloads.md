@@ -39,7 +39,7 @@ permalink: /downloads/
       </tbody>
     </table>
 
-    <h2 class="section-title">For trainers</h2>
+    <h2 class="section-title" id="for-trainers">For trainers</h2>
     <p>
       Delivering this course? The <strong>Trainer's Guide</strong> is a facilitator handbook —
       timed run-sheet, per-module talking points &amp; pitfalls, the dataset reference, the full

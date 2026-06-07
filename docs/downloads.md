@@ -39,6 +39,16 @@ permalink: /downloads/
       </tbody>
     </table>
 
+    <h2 class="section-title">For trainers</h2>
+    <p>
+      Delivering this course? The <strong>Trainer's Guide</strong> is a facilitator handbook —
+      timed run-sheet, per-module talking points &amp; pitfalls, the dataset reference, the full
+      capstone answer key, and every Microsoft documentation link in one place.
+    </p>
+    <ul class="downloads__list">
+      <li><a download href="{{ '/files/excel-for-sales-trainer-guide.pdf' | relative_url }}">excel-for-sales-trainer-guide.pdf</a> — facilitator handbook (PDF, 11 pages)</li>
+    </ul>
+
     <h2 class="section-title">Raw dataset (synthetic)</h2>
     <ul class="downloads__list">
       <li><a download href="{{ '/files/source/sales_data.csv' | relative_url }}">sales_data.csv</a> — the order-line export (2,000 rows)</li>

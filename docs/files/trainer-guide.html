@@ -1,0 +1,288 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<title>Excel for Sales — Trainer's Guide</title>
+<style>
+  @page { size: A4; margin: 16mm 15mm 18mm 15mm; }
+  * { box-sizing: border-box; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1f2a37; font-size: 10.5pt; line-height: 1.5; margin: 0; }
+  a { color: #047857; text-decoration: none; }
+  code, .mono, kbd { font-family: "Consolas", "SF Mono", Menlo, monospace; }
+  code { background: #ecfdf5; color: #065f46; padding: 0 3px; border-radius: 3px; font-size: 9.2pt; }
+  kbd { background: #f3f4f6; border: 1px solid #d8e0dc; border-radius: 4px; padding: 1px 6px; font-size: 9pt; }
+
+  /* running footer on every page */
+  .footer { position: fixed; bottom: -12mm; left: 0; right: 0; font-size: 8pt;
+    color: #6b7b73; border-top: 1px solid #e2e8e4; padding-top: 3px;
+    display: flex; justify-content: space-between; }
+
+  /* cover */
+  .cover { height: 247mm; display: flex; flex-direction: column; justify-content: center;
+    page-break-after: always; }
+  .cover .bar { width: 64px; height: 6px; background: #047857; margin-bottom: 26px; }
+  .cover .eyebrow { color: #047857; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; font-size: 11pt; }
+  .cover h1 { font-size: 40pt; margin: 6px 0 4px; letter-spacing: -1px; line-height: 1.05; }
+  .cover h2 { font-size: 17pt; font-weight: 600; color: #334155; margin: 0 0 28px; }
+  .cover .meta { font-size: 10.5pt; color: #475569; line-height: 1.9; }
+  .cover .meta b { color: #1f2a37; }
+  .cover .tag { margin-top: 30px; padding: 14px 18px; background: #ecfdf5;
+    border-left: 4px solid #047857; border-radius: 6px; font-size: 9.5pt; color: #065f46; }
+
+  h2.sec { font-size: 17pt; color: #065f46; margin: 0 0 4px; padding-bottom: 6px;
+    border-bottom: 2px solid #047857; page-break-after: avoid; }
+  .lead { color: #475569; margin: 0 0 14px; }
+  section.block { page-break-before: always; }
+  h3 { font-size: 12.5pt; margin: 16px 0 6px; page-break-after: avoid; }
+  h4 { font-size: 10pt; color: #047857; text-transform: uppercase; letter-spacing: .04em;
+    margin: 12px 0 4px; }
+  ul { margin: 4px 0 8px; padding-left: 18px; }
+  li { margin-bottom: 3px; }
+  ul.warn li { }
+  table { width: 100%; border-collapse: collapse; margin: 8px 0 14px; font-size: 9.6pt; }
+  th, td { text-align: left; padding: 6px 9px; border-bottom: 1px solid #e2e8e4; vertical-align: top; }
+  thead th { background: #ecfdf5; color: #065f46; font-size: 8.6pt; text-transform: uppercase;
+    letter-spacing: .03em; }
+  td.r, th.r { text-align: right; }
+  .grid2 { display: flex; gap: 22px; }
+  .grid2 > div { flex: 1; }
+
+  .module { border: 1px solid #e2e8e4; border-radius: 8px; padding: 12px 16px; margin: 0 0 14px;
+    page-break-inside: avoid; }
+  .module h3 { margin-top: 0; display: flex; align-items: center; gap: 10px; }
+  .mnum { background: #047857; color: #fff; border-radius: 6px; padding: 2px 9px; font-size: 10pt; }
+  .mtime { margin-left: auto; color: #6b7b73; font-size: 9.5pt; font-weight: 400; }
+  .module .obj { margin: 2px 0 4px; }
+  .module .files { margin: 0 0 6px; color: #6b7b73; font-size: 9pt; }
+  .cols { display: flex; gap: 22px; } .cols > div { flex: 1; }
+  ul.links { columns: 2; column-gap: 22px; } ul.links li { break-inside: avoid; }
+  .kpibox { background: #f8fafb; border: 1px solid #e2e8e4; border-radius: 8px; padding: 10px 14px; }
+</style></head><body>
+
+<div class="footer">
+  <span>Excel for Sales · Trainer's Guide · Oleks Tverdokhlieb</span>
+  <span>github.com/scripts-and-tables/Excel-101</span>
+</div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="bar"></div>
+  <div class="eyebrow">Trainer's Guide · Facilitator Handbook</div>
+  <h1>Excel for Sales</h1>
+  <h2>From a raw Dubai sales export to answers for the VP — the whole workflow.</h2>
+  <div class="meta">
+    <div><b>Prepared by</b> &nbsp; Oleks Tverdokhlieb</div>
+    <div><b>Course repo</b> &nbsp; <a href="https://github.com/scripts-and-tables/Excel-101">github.com/scripts-and-tables/Excel-101</a></div>
+    <div><b>Live course</b> &nbsp; <a href="https://scripts-and-tables.github.io/Excel-101/">https://scripts-and-tables.github.io/Excel-101/</a></div>
+    <div><b>Format</b> &nbsp; Intermediate · ≈ 5 hours · instructor-led, practice-heavy</div>
+    <div><b>Version 1.0</b> &nbsp; · &nbsp; 07 June 2026</div>
+  </div>
+  <div class="tag"><b>100% synthetic data.</b> A UAE FMCG setting (fictional Food &amp; HPC brands
+    sold to Dubai supermarkets). Customers are real chain names used only as labels; everything
+    else is generated. Nothing real or confidential — and the brands are unrelated to any Transmed portfolio.</div>
+</div>
+
+<!-- OVERVIEW -->
+<section class="block">
+  <h2 class="sec">About this guide</h2>
+  <p class="lead">This handbook is for <b>trainers delivering the course</b> — the run-sheet, talking
+  points, pitfalls, and the capstone answer key. Learner-facing lessons, downloadable workbooks and
+  quizzes live on the course site; this is the back-of-house companion.</p>
+
+  <h3>Audience &amp; scope</h3>
+  <p>Intermediate sales people (account managers, reps, sales ops) who <b>receive</b> sales exports and
+  must analyse them. We teach the ~80% they use daily and deliberately exclude analyst tooling
+  (dynamic arrays, Power Query, Power Pivot, macros). VLOOKUP is taught as primary; XLOOKUP is a note.
+  Works in Excel 2016+.</p>
+
+  <div class="grid2">
+    <div>
+      <h3>Timed agenda</h3>
+      <table><tbody><tr><td>Intro &amp; setup</td><td class='r'>10 min</td></tr><tr><td>M1 · Receive &amp; clean</td><td class='r'>50 min</td></tr><tr><td>M2 · Structure &amp; enrich</td><td class='r'>45 min</td></tr><tr><td>☕ Break</td><td class='r'>10 min</td></tr><tr><td>M3 · Explore &amp; summarize</td><td class='r'>60 min</td></tr><tr><td>M4 · Pivot &amp; rank</td><td class='r'>40 min</td></tr><tr><td>☕ Break</td><td class='r'>10 min</td></tr><tr><td>M5 · Present</td><td class='r'>50 min</td></tr><tr><td>🎯 Capstone</td><td class='r'>40 min</td></tr><tr><td>Wrap-up &amp; Q&amp;A</td><td class='r'>10 min</td></tr></tbody></table>
+      <p style="font-size:9pt;color:#6b7b73">Two short breaks; capstone is the assessment. Stretches to ~5 hrs with fuller Q&amp;A.</p>
+    </div>
+    <div>
+      <h3>Learning outcomes</h3>
+      <ul>
+        <li>Clean a raw export into a trustworthy Table (TRIM/CLEAN, VALUE/DATEVALUE, text functions, dedupe).</li>
+        <li>Enrich with VLOOKUP — rep&rarr;manager/quota and brand&rarr;brand manager — and dodge its six failures.</li>
+        <li>Summarise with SUMIFS/COUNTIFS/AVERAGEIFS; compute net sales, return rate, AOV, quota attainment.</li>
+        <li>Reshape and rank with PivotTables, slicers, leaderboards.</li>
+        <li>Present a one-pager; run the whole workflow in a capstone.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- DATASET -->
+<section class="block">
+  <h2 class="sec">The dataset</h2>
+  <p class="lead">One synthetic export flows through every module. Two reference tables drive the lookups.</p>
+  <div class="grid2">
+    <div>
+      <h4>sales_data.csv — order lines</h4>
+      <p style="font-size:9.4pt">OrderNumber · Date · InvoiceType (Sales/Return) · CustomerCode · Customer ·
+      BranchCode · Branch · Area · SalesRep · Brand · Category · SalesQuantity · SalesValue.
+      <b>Returns carry negative</b> quantity &amp; value.</p>
+      <h4>reps.csv</h4><p style="font-size:9.4pt">SalesRep · Manager · AnnualQuota</p>
+      <h4>brands.csv</h4><p style="font-size:9.4pt">Brand · Category · BrandManager</p>
+    </div>
+    <div class="kpibox">
+      <h4>At a glance (computed)</h4>
+      <table><tbody>
+        <tr><td>Order lines</td><td class="r">2,000</td></tr>
+        <tr><td>Period</td><td class="r">2024-01-01 → 2025-12-31</td></tr>
+        <tr><td>Customers · branches · areas</td><td class="r">15 · 69 · 18</td></tr>
+        <tr><td>Reps · brands · brand managers</td><td class="r">15 · 20 · 5</td></tr>
+        <tr><td>Net sales</td><td class="r">AED&nbsp;21,851,229</td></tr>
+        <tr><td>Return rate</td><td class="r">6.5%</td></tr>
+        <tr><td>Average sale value</td><td class="r">AED&nbsp;12,494</td></tr>
+      </tbody></table>
+      <p style="font-size:8.5pt;color:#6b7b73;margin:4px 0 0">Example entities used in exercises:
+      rep <b>Mohammed Saleh</b>, brand manager <b>Imran Sheikh</b>, area <b>Deira</b>,
+      category <b>Food</b>, brand <b>Crunchio</b>, customer <b>Carrefour</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE NOTES -->
+<section class="block">
+  <h2 class="sec">Module-by-module facilitator notes</h2>
+  
+        <section class="module">
+          <h3><span class="mnum">M1</span> Receive &amp; clean
+              <span class="mtime">50 min</span></h3>
+          <p class="obj"><b>Objective.</b> Turn a raw supermarket sales export into a clean, trustworthy Excel Table.</p>
+          <p class="files">Files: <code>module-1.xlsx</code></p>
+          <div class="cols">
+            <div>
+              <h4>Teach</h4><ul><li>Make it a Table (<b>Ctrl+T</b>), name it <code>Sales</code> — structured references, auto-expand, filters.</li><li><b>TRIM</b> stray spaces, <b>CLEAN</b> hidden line-breaks/tabs in Customer names.</li><li><b>Find &amp; Replace</b> (Ctrl+H) to fix CAPS areas in bulk (DEIRA &rarr; Deira).</li><li><b>VALUE</b> for numbers stored as text, <b>DATEVALUE</b> for text dates (left-aligned = text).</li><li>Split/combine codes: <b>LEFT / MID / RIGHT</b>, <b>SUBSTITUTE</b>, <b>&amp;</b> to join.</li><li><b>Paste Special &rarr; Values</b> to lock helper results; Remove Duplicates; sort; freeze header.</li><li>Number formats: AED currency &amp; the <code>"AED" #,##0</code> custom format.</li></ul>
+            </div>
+            <div>
+              <h4>Watch for</h4><ul class="warn"><li>Returns carry <b>negative</b> quantity &amp; value — point this out early; it underpins every KPI later.</li><li>The most common 'my SUM is wrong' is text-stored numbers — show the left-align tell.</li><li>Data &gt; Remove Duplicates keeps the first occurrence; untick OrderNumber when de-duping.</li></ul>
+              <h4>Exercises</h4><p>RawData (messy) + a Cleanup Practice sheet (one cell per function) + 10 exercises. Solution = clean Sales Table.</p>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <h3><span class="mnum">M2</span> Structure &amp; enrich
+              <span class="mtime">45 min</span></h3>
+          <p class="obj"><b>Objective.</b> Add the context the export lacks — sales manager &amp; quota (Reps) and brand manager (Brands) — with VLOOKUP.</p>
+          <p class="files">Files: <code>module-2.xlsx</code></p>
+          <div class="cols">
+            <div>
+              <h4>Teach</h4><ul><li><b>VLOOKUP</b> anatomy: <code>=VLOOKUP([@SalesRep], Reps, 2, FALSE)</code> &rarr; Manager; <code>3</code> &rarr; Quota.</li><li>Second lookup: <code>=VLOOKUP([@Brand], Brands, 3, FALSE)</code> &rarr; BrandManager.</li><li>Always <b>FALSE</b> (exact). Demonstrate how TRUE silently returns the wrong row.</li><li>The <b>six failure modes</b> (forgot FALSE, can't look left, column-index shift, text-vs-number, spaces, genuine #N/A).</li><li><b>IFERROR</b> to turn #N/A into "unknown". XLOOKUP shown as the modern note only.</li></ul>
+            </div>
+            <div>
+              <h4>Watch for</h4><ul class="warn"><li>Learners conflate lookup value vs first column — stress VLOOKUP matches the table's <i>first</i> column.</li><li>If a lookup #N/As on identical-looking text, it's almost always spaces or text-vs-number (ties back to Stage 1).</li><li>Keep XLOOKUP brief — many learners are on Excel 2016/2019 where it doesn't exist.</li></ul>
+              <h4>Exercises</h4><p>Sales + Reps + Brands sheets, 7 exercises. Solution = enriched Sales (SalesManager/BrandManager/Quota) + a Failure Modes sheet.</p>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <h3><span class="mnum">M3</span> Explore &amp; summarize
+              <span class="mtime">60 min</span></h3>
+          <p class="obj"><b>Objective.</b> Answer everyday questions: filter first, then the conditional trio and the sales KPIs.</p>
+          <p class="files">Files: <code>module-3.xlsx</code></p>
+          <div class="cols">
+            <div>
+              <h4>Teach</h4><ul><li>Explore with <b>AutoFilter</b> (Ctrl+Shift+L) and the <b>Status Bar</b> (sum/count/avg, no formula).</li><li><b>SUBTOTAL(9/103/101, …)</b> totals only visible rows; Data &gt; Subtotal for group totals (range only).</li><li>The trio: <b>SUMIFS / COUNTIFS / AVERAGEIFS</b> — sum_range first, then criteria pairs.</li><li>Net sales = <code>SUM(SalesValue)</code> (returns net out automatically); gross = SUMIFS on InvoiceType=Sales.</li><li>KPIs: <b>return rate</b>, <b>average sale</b>, <b>sales by brand manager</b> (enriched column), <b>quota attainment</b> (SUMIFS ÷ VLOOKUP).</li><li>Mechanics: double-click fill handle; F4 absolute/relative.</li></ul>
+            </div>
+            <div>
+              <h4>Watch for</h4><ul class="warn"><li>Return rate: returns are negative, so negate before dividing — <code>=-SUMIFS(…Return)/SUMIFS(…Sales)</code>.</li><li>Data &gt; Subtotal is greyed out on a Table — convert to range first (common 'why can't I' moment).</li><li>Encourage criteria-in-cells so a formula becomes a reusable mini-report.</li></ul>
+              <h4>Exercises</h4><p>Enriched Sales + Reps + Brands, 11 prompts (SUM/AVERAGE/COUNT, IF, the trio, KPIs, commission-free quota).</p>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <h3><span class="mnum">M4</span> Pivot &amp; rank
+              <span class="mtime">40 min</span></h3>
+          <p class="obj"><b>Objective.</b> Reshape the whole dataset in seconds and produce the leaderboards.</p>
+          <p class="files">Files: <code>module-4.xlsx</code></p>
+          <div class="cols">
+            <div>
+              <h4>Teach</h4><ul><li>Build a pivot; the four drop zones; switch Sum &rarr; Count/Average via Value Field Settings.</li><li>Group <b>Date</b> by Quarter/Year; <b>Show Values As &rarr; % of Grand Total</b>.</li><li><b>Slicers</b> for Area/InvoiceType; <b>Report Connections</b> to drive several pivots (mini-dashboard).</li><li>Leaderboards: <b>Top-5 reps</b> by net sales (Value Filter &rarr; Top 10 &rarr; 5) and <b>net sales by Brand Manager</b>.</li><li>Refresh: pivots cache — right-click &rarr; Refresh / Data &gt; Refresh All.</li></ul>
+            </div>
+            <div>
+              <h4>Watch for</h4><ul class="warn"><li>Date grouping needs real dates — if grouping fails, a date column is still text (back to Stage 1).</li><li>openpyxl can't author pivots, so the solution mirrors them with SUMIFS + data bars — tell learners that.</li></ul>
+              <h4>Exercises</h4><p>Enriched Sales + scratchpad (4 pivots + 2 leaderboards). Solution = SUMIFS mirror with a data-bar leaderboard.</p>
+            </div>
+          </div>
+        </section>
+        <section class="module">
+          <h3><span class="mnum">M5</span> Present &amp; capstone
+              <span class="mtime">70 min</span></h3>
+          <p class="obj"><b>Objective.</b> Turn the analysis into a one-page summary, then have learners run the whole workflow on a fresh file.</p>
+          <p class="files">Files: <code>module-5.xlsx + capstone.xlsx</code></p>
+          <div class="cols">
+            <div>
+              <h4>Teach</h4><ul><li>KPI strip (net sales, gross, return rate, avg sale, # invoices) — most important number top-left.</li><li>One clean column chart (sorted, titled, AED axis); a Category × Area heat map (color scale).</li><li>Conditional formatting: data bars, icon sets, duplicate values, and a formula rule to flag Return rows red.</li><li>Hand out the capstone: a fresh file + the 11 questions; let them work, then walk the answer key.</li></ul>
+            </div>
+            <div>
+              <h4>Watch for</h4><ul class="warn"><li>Keep presentation ruthless — one screen, one colour per area, AED 1.2M not 1234567.89.</li><li>In the capstone, push live formulas over typed numbers so answers survive a data refresh.</li></ul>
+              <h4>Exercises</h4><p>One-Pager build + capstone.xlsx (Questions / Answers). Answer key with expected values is in this guide.</p>
+            </div>
+          </div>
+        </section>
+</section>
+
+<!-- CAPSTONE -->
+<section class="block">
+  <h2 class="sec">Capstone — answer key</h2>
+  <p class="lead"><b>Brief.</b> "You're the new analyst on the Dubai account. Before Monday's meeting,
+  answer the VP's questions, then drop the headline numbers into a one-page summary." Learners use
+  PivotTables, AutoFilter, SUMIFS/COUNTIFS and VLOOKUP. Expected values below (your learners' numbers
+  should match — the data is deterministic).</p>
+  <table>
+    <thead><tr><th class="r">#</th><th>Question</th><th class="r">Expected answer</th></tr></thead>
+    <tbody><tr><td class='r'>1</td><td>Net sales (sum of SalesValue)</td><td class='r mono'>AED&nbsp;21,851,229</td></tr><tr><td class='r'>2</td><td>Gross sales (Sales invoices only)</td><td class='r mono'>AED&nbsp;23,363,782</td></tr><tr><td class='r'>3</td><td>Total returns value</td><td class='r mono'>AED&nbsp;-1,512,553</td></tr><tr><td class='r'>4</td><td>Return rate (returns ÷ gross)</td><td class='r mono'>6.5%</td></tr><tr><td class='r'>5</td><td>Number of invoice lines</td><td class='r mono'>2,000</td></tr><tr><td class='r'>6</td><td>Average sale value (Sales lines only)</td><td class='r mono'>AED&nbsp;12,494</td></tr><tr><td class='r'>7</td><td>Net sales in the Deira area</td><td class='r mono'>AED&nbsp;2,659,622</td></tr><tr><td class='r'>8</td><td>Net sales for the Food category</td><td class='r mono'>AED&nbsp;8,407,356</td></tr><tr><td class='r'>9</td><td>Net sales for customer Carrefour</td><td class='r mono'>AED&nbsp;1,409,320</td></tr><tr><td class='r'>10</td><td>Net sales for brand manager Imran Sheikh</td><td class='r mono'>AED&nbsp;3,193,285</td></tr><tr><td class='r'>11</td><td>Mohammed Saleh — quota attainment</td><td class='r mono'>120.8%</td></tr></tbody>
+  </table>
+  <p style="font-size:9pt;color:#6b7b73">Each answer also has a live-formula route in
+  <code>capstone.xlsx</code> (Answers sheet) — prefer formulas over typed numbers so they survive a refresh.</p>
+</section>
+
+<!-- DELIVERY TIPS -->
+<section class="block">
+  <h2 class="sec">Delivery tips</h2>
+  <ul>
+    <li><b>Demo, then they do.</b> Each module: show the move once on the shared screen, then give them the exercise sheet and circulate.</li>
+    <li><b>One running file.</b> Reinforce that it's the same dataset travelling the workflow — that's the spine that makes it stick.</li>
+    <li><b>Returns are negative</b> is the single most important concept for the KPIs — anchor it in M1 and keep referring back.</li>
+    <li><b>Virtual delivery:</b> share the working file in advance; use breakout time for exercises; reconvene to compare with the solution file.</li>
+    <li><b>Pacing:</b> M3 is the longest and highest-value — protect its time; M4/M5 can compress if you're behind.</li>
+    <li><b>Quizzes</b> (6 per module, in-browser, 70% to pass) are optional self-checks; the <b>capstone is the real assessment</b>.</li>
+  </ul>
+</section>
+
+<!-- APPENDICES -->
+<section class="block">
+  <h2 class="sec">Appendix A · Keyboard shortcuts</h2>
+  <table style="width:60%"><tbody><tr><td><kbd>Ctrl + T</kbd></td><td>Create a Table</td></tr><tr><td><kbd>Ctrl + Shift + L</kbd></td><td>Toggle AutoFilter</td></tr><tr><td><kbd>Ctrl + Alt + V</kbd></td><td>Paste Special</td></tr><tr><td><kbd>Ctrl + H / Ctrl + F</kbd></td><td>Replace / Find</td></tr><tr><td><kbd>Ctrl + D</kbd></td><td>Fill down</td></tr><tr><td><kbd>Ctrl + Shift + ↓</kbd></td><td>Select to bottom of column</td></tr><tr><td><kbd>Ctrl + 1</kbd></td><td>Format Cells</td></tr><tr><td><kbd>Ctrl + Shift + 1</kbd></td><td>Number format (thousands)</td></tr><tr><td><kbd>Alt + =</kbd></td><td>AutoSum</td></tr><tr><td><kbd>Alt + N + V</kbd></td><td>Insert PivotTable</td></tr><tr><td><kbd>F2</kbd></td><td>Edit active cell</td></tr><tr><td><kbd>F4</kbd></td><td>Toggle absolute / relative reference</td></tr></tbody></table>
+
+  <h2 class="sec" style="margin-top:22px">Appendix B · Official Microsoft documentation</h2>
+  <p class="lead">Every function/feature the course covers, linked to Microsoft's own docs.</p>
+  <h4>M1 — cleaning & text</h4><ul class='links'><li><a href='https://support.microsoft.com/office/create-and-format-tables-e81aa349-b006-4f8a-9806-5af9df0ac664'>Create and format an Excel table</a></li><li><a href='https://support.microsoft.com/en-us/office/top-ten-ways-to-clean-your-data-2844b620-677c-47a7-ac3e-c2e157d1db19'>Top ten ways to clean your data</a></li><li><a href='https://support.microsoft.com/office/410388fa-c5df-49c6-b16c-9e5630b479f9'>TRIM</a></li><li><a href='https://support.microsoft.com/office/26f3d7c5-475f-4a9c-90e5-4b8ba987ba41'>CLEAN</a></li><li><a href='https://support.microsoft.com/office/257d0108-07dc-437d-ae1c-bc2d3953d8c2'>VALUE</a></li><li><a href='https://support.microsoft.com/office/df8b07d4-7761-4a93-bc33-b7471bbff252'>DATEVALUE</a></li><li><a href='https://support.microsoft.com/office/9203d2d2-7960-479b-84c6-1ea52b99640c'>LEFT</a></li><li><a href='https://support.microsoft.com/office/d5f9e25c-d7d6-472e-b568-4ecb12433028'>MID</a></li><li><a href='https://support.microsoft.com/office/240267ee-9afa-4639-a02b-f19e1786cf2f'>RIGHT</a></li><li><a href='https://support.microsoft.com/office/6434944e-a904-4336-a9b0-1e58df3bc332'>SUBSTITUTE</a></li><li><a href='https://support.microsoft.com/en-us/office/combine-text-from-two-or-more-cells-into-one-cell-81ba0946-ce78-42ed-b3c3-21340eb164a6'>Combine text (&amp; / CONCAT)</a></li><li><a href='https://support.microsoft.com/en-us/office/find-or-replace-text-and-numbers-on-a-worksheet-0e304ca5-ecef-4808-b90f-fdb42f892e90'>Find or replace text and numbers</a></li><li><a href='https://support.microsoft.com/en-us/office/find-and-remove-duplicates-00e35bea-b46a-4d5d-b28e-66a552dc138d'>Find and remove duplicates</a></li><li><a href='https://support.microsoft.com/en-us/office/sort-data-in-a-range-or-table-in-excel-62d0b95d-2a90-4610-a6ae-2e545c4a4654'>Sort data in a range or table</a></li><li><a href='https://support.microsoft.com/en-us/office/freeze-panes-to-lock-rows-and-columns-dab2ffc9-020d-4026-8121-67dd25f2508f'>Freeze panes</a></li><li><a href='https://support.microsoft.com/en-us/office/move-or-copy-cells-rows-and-columns-3ebbcafd-8566-42d8-8023-a2ec62746cfc'>Move or copy cells (Paste Special)</a></li><li><a href='https://support.microsoft.com/en-us/office/available-number-formats-in-excel-0afe8f52-97db-41f1-b972-4b46e9f1e8d2'>Available number formats</a></li></ul><h4>M2 — lookups</h4><ul class='links'><li><a href='https://support.microsoft.com/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1'>VLOOKUP</a></li><li><a href='https://support.microsoft.com/en-us/office/quick-reference-card-vlookup-troubleshooting-tips-6fe7fe1b-709b-4958-adfb-9f2a409dcf38'>VLOOKUP troubleshooting (failure modes)</a></li><li><a href='https://support.microsoft.com/en-us/office/iferror-function-c526fd07-caeb-47b8-8bb6-63f3e417f611'>IFERROR</a></li><li><a href='https://support.microsoft.com/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929'>XLOOKUP</a></li><li><a href='https://support.microsoft.com/en-us/office/look-up-values-with-vlookup-index-or-match-68297403-7c3c-4150-9e3c-4d348188976b'>Look up values with VLOOKUP, INDEX or MATCH</a></li><li><a href='https://support.microsoft.com/office/e8dffd45-c762-47d6-bf89-533f4a37673a'>MATCH</a></li></ul><h4>M3 — summarizing</h4><ul class='links'><li><a href='https://support.microsoft.com/office/043e1c7d-7726-4e80-8f32-07b23e057f89'>SUM</a></li><li><a href='https://support.microsoft.com/office/047bac88-d466-426c-a32b-8f33eb960cf6'>AVERAGE</a></li><li><a href='https://support.microsoft.com/office/a59cd7fc-b623-4d93-87a4-d23bf411294c'>COUNT</a></li><li><a href='https://support.microsoft.com/office/7dc98875-d5c1-46f1-9a82-53f3219e2509'>COUNTA</a></li><li><a href='https://support.microsoft.com/office/e0012414-9ac8-4b34-9a47-73e662c08098'>MAX</a></li><li><a href='https://support.microsoft.com/office/69aed7c9-4e8a-4755-a9bc-aa8bbff73be2'>IF</a></li><li><a href='https://support.microsoft.com/office/c9e748f5-7ea7-455d-9406-611cebce642b'>SUMIFS</a></li><li><a href='https://support.microsoft.com/office/dda3dc6e-f74e-4aee-88bc-aa8c2a866842'>COUNTIFS</a></li><li><a href='https://support.microsoft.com/office/48910c45-1fc0-4389-a028-f7c5c3001690'>AVERAGEIFS</a></li><li><a href='https://support.microsoft.com/office/7b027003-f060-4ade-9040-e478765b9939'>SUBTOTAL</a></li><li><a href='https://support.microsoft.com/en-us/office/filter-data-in-a-range-or-table-in-excel-01832226-31b5-4568-8806-38c37dcc180e'>Filter data in a range or table</a></li><li><a href='https://support.microsoft.com/en-us/office/insert-subtotals-in-a-list-of-data-in-a-worksheet-7881d256-b4fa-4f81-b71e-b0a3d4a52b3a'>Insert subtotals (Data &gt; Subtotal)</a></li><li><a href='https://support.microsoft.com/en-us/office/use-autosum-to-sum-numbers-in-excel-543941e7-e783-44ef-8317-7d1bb85fe706'>Use AutoSum</a></li><li><a href='https://support.microsoft.com/en-us/office/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9'>Relative / absolute / mixed references</a></li></ul><h4>M4 — pivot &amp; rank</h4><ul class='links'><li><a href='https://support.microsoft.com/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576'>Create a PivotTable</a></li><li><a href='https://support.microsoft.com/en-us/office/group-or-ungroup-data-in-a-pivottable-c9d1ddd0-6580-47d1-82bc-c84a5a340725'>Group or ungroup data in a PivotTable</a></li><li><a href='https://support.microsoft.com/en-us/office/show-different-calculations-in-pivottable-value-fields-014d2777-baaf-480b-a32b-98431f48bfec'>Show Values As</a></li><li><a href='https://support.microsoft.com/en-us/office/use-slicers-to-filter-data-249f966b-a9d5-4b0f-b31a-12651785d29d'>Use slicers to filter data</a></li><li><a href='https://support.microsoft.com/en-us/office/refresh-pivottable-data-6d24cece-a038-468a-8176-8b6568ca9be2'>Refresh PivotTable data</a></li></ul><h4>M5 — present</h4><ul class='links'><li><a href='https://support.microsoft.com/office/add-change-or-clear-conditional-formats-fed60dfa-1d3f-4e13-9ecb-f1951ff89d7f'>Add, change, or clear conditional formats</a></li><li><a href='https://support.microsoft.com/en-us/office/create-a-chart-from-start-to-finish-0baf399e-dd61-4e18-8a73-b3fd5d5680c2'>Create a chart from start to finish</a></li><li><a href='https://support.microsoft.com/en-us/office/available-number-formats-in-excel-0afe8f52-97db-41f1-b972-4b46e9f1e8d2'>Available number formats</a></li><li><a href='https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f'>Keyboard shortcuts in Excel</a></li></ul>
+
+  <h2 class="sec" style="margin-top:22px">Appendix C · Downloads</h2>
+  <p>All files are served from the course site under <code>/files/</code>:</p>
+  <ul>
+    <li>Working &amp; solution workbooks: <code>module-1.xlsx</code> … <code>module-5.xlsx</code>, <code>capstone.xlsx</code></li>
+    <li>Datasets: <code>sales_data.csv</code>, <code>reps.csv</code>, <code>brands.csv</code></li>
+    <li>Downloads page: <a href="https://scripts-and-tables.github.io/Excel-101/downloads/">https://scripts-and-tables.github.io/Excel-101/downloads/</a></li>
+  </ul>
+</section>
+
+<!-- CREDITS -->
+<section class="block">
+  <h2 class="sec">Credits</h2>
+  <div class="kpibox" style="max-width:120mm">
+    <p style="margin:0 0 6px"><b>Author &amp; facilitator</b><br>Oleks Tverdokhlieb</p>
+    <p style="margin:0 0 6px"><b>Course repository</b><br><a href="https://github.com/scripts-and-tables/Excel-101">https://github.com/scripts-and-tables/Excel-101</a></p>
+    <p style="margin:0 0 6px"><b>Live course</b><br><a href="https://scripts-and-tables.github.io/Excel-101/">https://scripts-and-tables.github.io/Excel-101/</a></p>
+    <p style="margin:0 0 6px"><b>Data</b><br>100% synthetic, generated from a fixed seed. Customers are
+    real Dubai supermarket chain names used only as labels; brands are fictional and unrelated to any
+    real company.</p>
+    <p style="margin:0"><b>Licence</b><br>Course content MIT licensed. Version 1.0 · 07 June 2026</p>
+  </div>
+</section>
+
+</body></html>

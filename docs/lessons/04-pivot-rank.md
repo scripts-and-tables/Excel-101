@@ -61,13 +61,12 @@ On the scratchpad: net sales by Area; Category × Quarter; net sales by Customer
 
 You've got the numbers and the rankings. The last step is making them land for someone with ten seconds and a meeting to run.
 
-## Further learning
+## Further learning — official Microsoft documentation
 
-**Official Microsoft docs**
 - [Create a PivotTable to analyze worksheet data](https://support.microsoft.com/office/create-a-pivottable-to-analyze-worksheet-data-a9a84538-bfe9-40a9-a8e9-f99134456576)
 - [Group or ungroup data in a PivotTable](https://support.microsoft.com/en-us/office/group-or-ungroup-data-in-a-pivottable-c9d1ddd0-6580-47d1-82bc-c84a5a340725)
+- [Show different calculations in PivotTable value fields (Show Values As)](https://support.microsoft.com/en-us/office/show-different-calculations-in-pivottable-value-fields-014d2777-baaf-480b-a32b-98431f48bfec)
 - [Use slicers to filter data](https://support.microsoft.com/en-us/office/use-slicers-to-filter-data-249f966b-a9d5-4b0f-b31a-12651785d29d)
-
-**Video:** [PivotTables — video tutorials](https://www.youtube.com/results?search_query=excel+pivot+table+tutorial)
+- [Refresh PivotTable data](https://support.microsoft.com/en-us/office/refresh-pivottable-data-6d24cece-a038-468a-8176-8b6568ca9be2)
 
 Take the [Stage 4 quiz](../quizzes/module-4), then finish with [Stage 5 — Present & capstone](05-present-capstone).

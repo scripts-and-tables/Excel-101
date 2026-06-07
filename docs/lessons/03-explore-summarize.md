@@ -80,13 +80,14 @@ A rep's net sales ÷ their quota, with the quota pulled from `Reps`:
 
 You can answer almost any single question now. When you need to slice *many* ways at once — Area × Category × quarter — formulas get tedious. That's what PivotTables are for.
 
-## Further learning
+## Further learning — official Microsoft documentation
 
-**Official Microsoft docs**
-- [SUMIFS function](https://support.microsoft.com/office/c9e748f5-7ea7-455d-9406-611cebce642b) · [COUNTIFS function](https://support.microsoft.com/office/dda3dc6e-f74e-4aee-88bc-aa8c2a866842) · [AVERAGEIFS function](https://support.microsoft.com/office/48910c45-1fc0-4389-a028-f7c5c3001690)
-- [IF function](https://support.microsoft.com/office/69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) · [SUBTOTAL function](https://support.microsoft.com/office/7b027003-f060-4ade-9040-e478765b9939)
-- [Filter data in a range or table](https://support.microsoft.com/en-us/office/filter-data-in-a-range-or-table-in-excel-01832226-31b5-4568-8806-38c37dcc180e)
+**Functions**
+- [SUM](https://support.microsoft.com/office/043e1c7d-7726-4e80-8f32-07b23e057f89) · [AVERAGE](https://support.microsoft.com/office/047bac88-d466-426c-a32b-8f33eb960cf6) · [COUNT](https://support.microsoft.com/office/a59cd7fc-b623-4d93-87a4-d23bf411294c) · [COUNTA](https://support.microsoft.com/office/7dc98875-d5c1-46f1-9a82-53f3219e2509) · [MAX](https://support.microsoft.com/office/e0012414-9ac8-4b34-9a47-73e662c08098)
+- [IF](https://support.microsoft.com/office/69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) · [SUMIFS](https://support.microsoft.com/office/c9e748f5-7ea7-455d-9406-611cebce642b) · [COUNTIFS](https://support.microsoft.com/office/dda3dc6e-f74e-4aee-88bc-aa8c2a866842) · [AVERAGEIFS](https://support.microsoft.com/office/48910c45-1fc0-4389-a028-f7c5c3001690) · [SUBTOTAL](https://support.microsoft.com/office/7b027003-f060-4ade-9040-e478765b9939)
 
-**Video:** [SUMIFS / COUNTIFS — video tutorials](https://www.youtube.com/results?search_query=excel+sumifs+countifs+tutorial)
+**Features & how-tos**
+- [Filter data in a range or table](https://support.microsoft.com/en-us/office/filter-data-in-a-range-or-table-in-excel-01832226-31b5-4568-8806-38c37dcc180e) · [Insert subtotals in a list of data (Data > Subtotal)](https://support.microsoft.com/en-us/office/insert-subtotals-in-a-list-of-data-in-a-worksheet-7881d256-b4fa-4f81-b71e-b0a3d4a52b3a)
+- [Use AutoSum to sum numbers](https://support.microsoft.com/en-us/office/use-autosum-to-sum-numbers-in-excel-543941e7-e783-44ef-8317-7d1bb85fe706) · [Switch between relative, absolute & mixed references](https://support.microsoft.com/en-us/office/switch-between-relative-absolute-and-mixed-references-dfec08cd-ae65-4f56-839e-5f0d8d0baca9)
 
 Take the [Stage 3 quiz](../quizzes/module-3), then continue to [Stage 4 — Pivot & rank](04-pivot-rank).

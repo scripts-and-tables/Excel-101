@@ -85,4 +85,13 @@ In the `Exercises` sheet: add `SalesManager`, `Quota` (from `Reps`) and `BrandMa
 
 The file is clean **and** enriched — every line now carries its sales manager, quota and brand manager. Time to answer questions.
 
+## Further learning
+
+**Official Microsoft docs**
+- [VLOOKUP function](https://support.microsoft.com/office/vlookup-function-0bbc8083-26fe-4963-8ab8-93a18ad188a1)
+- [VLOOKUP troubleshooting tips (the failure modes)](https://support.microsoft.com/en-us/office/quick-reference-card-vlookup-troubleshooting-tips-6fe7fe1b-709b-4958-adfb-9f2a409dcf38)
+- [XLOOKUP function (the modern alternative)](https://support.microsoft.com/office/xlookup-function-b7fd680e-6d10-43e6-84f9-88eae8bf5929)
+
+**Video:** [VLOOKUP — video tutorials](https://www.youtube.com/results?search_query=excel+vlookup+tutorial)
+
 Take the [Stage 2 quiz](../quizzes/module-2), then continue to [Stage 3 — Explore & summarize](03-explore-summarize).

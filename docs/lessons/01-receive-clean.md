@@ -98,4 +98,16 @@ Formatting changes how a number *looks*, not what it *is*. Quick keys: **Ctrl+Sh
 
 Your `Sales` Table is now clean, typed, deduped, sorted and readable. But the export is missing context — each rep's **manager** and **quota**, and each brand's **brand manager**. That's next.
 
+## Further learning
+
+**Official Microsoft docs**
+- [Create and format an Excel table](https://support.microsoft.com/office/create-and-format-tables-e81aa349-b006-4f8a-9806-5af9df0ac664)
+- [Top ten ways to clean your data](https://support.microsoft.com/en-us/office/top-ten-ways-to-clean-your-data-2844b620-677c-47a7-ac3e-c2e157d1db19)
+- [TRIM](https://support.microsoft.com/office/410388fa-c5df-49c6-b16c-9e5630b479f9) · [CLEAN](https://support.microsoft.com/office/26f3d7c5-475f-4a9c-90e5-4b8ba987ba41) · [VALUE](https://support.microsoft.com/office/257d0108-07dc-437d-ae1c-bc2d3953d8c2) · [DATEVALUE](https://support.microsoft.com/office/df8b07d4-7761-4a93-bc33-b7471bbff252)
+- [LEFT](https://support.microsoft.com/office/9203d2d2-7960-479b-84c6-1ea52b99640c) · [MID](https://support.microsoft.com/office/d5f9e25c-d7d6-472e-b568-4ecb12433028) · [RIGHT](https://support.microsoft.com/office/240267ee-9afa-4639-a02b-f19e1786cf2f) · [SUBSTITUTE](https://support.microsoft.com/office/6434944e-a904-4336-a9b0-1e58df3bc332)
+- [Find or replace text and numbers](https://support.microsoft.com/en-us/office/find-or-replace-text-and-numbers-on-a-worksheet-0e304ca5-ecef-4808-b90f-fdb42f892e90) · [Find and remove duplicates](https://support.microsoft.com/en-us/office/find-and-remove-duplicates-00e35bea-b46a-4d5d-b28e-66a552dc138d)
+- [Move or copy cells (Paste Special)](https://support.microsoft.com/en-us/office/move-or-copy-cells-rows-and-columns-3ebbcafd-8566-42d8-8023-a2ec62746cfc) · [Available number formats](https://support.microsoft.com/en-us/office/available-number-formats-in-excel-0afe8f52-97db-41f1-b972-4b46e9f1e8d2)
+
+**Video:** [Cleaning data & Excel Tables — video tutorials](https://www.youtube.com/results?search_query=excel+clean+data+tables+trim+tutorial)
+
 Take the [Stage 1 quiz](../quizzes/module-1), then continue to [Stage 2 — Structure & enrich](02-structure-enrich).

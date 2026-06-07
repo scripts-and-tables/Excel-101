@@ -87,4 +87,13 @@ Compare against `capstone.xlsx` (solution) — the `Answers` sheet has a working
 
 You can take a raw Dubai sales export and walk it through the whole process: **clean → enrich → explore & summarize → pivot & rank → present**. That's the 80% of Excel a sales team uses, in the order you'd actually use it.
 
+## Further learning
+
+**Official Microsoft docs**
+- [Add, change, or clear conditional formats](https://support.microsoft.com/office/add-change-or-clear-conditional-formats-fed60dfa-1d3f-4e13-9ecb-f1951ff89d7f)
+- [Create a chart from start to finish](https://support.microsoft.com/en-us/office/create-a-chart-from-start-to-finish-0baf399e-dd61-4e18-8a73-b3fd5d5680c2)
+- [Available number formats in Excel](https://support.microsoft.com/en-us/office/available-number-formats-in-excel-0afe8f52-97db-41f1-b972-4b46e9f1e8d2)
+
+**Video:** [Conditional formatting, charts & dashboards — video tutorials](https://www.youtube.com/results?search_query=excel+conditional+formatting+chart+dashboard+tutorial)
+
 Take the [Stage 5 quiz](../quizzes/module-5) to wrap up. To go further later — each its own topic — look at **Power Query** (auto-refresh from the system), **XLOOKUP & dynamic arrays**, and **Power BI**.

@@ -80,4 +80,13 @@ A rep's net sales ÷ their quota, with the quota pulled from `Reps`:
 
 You can answer almost any single question now. When you need to slice *many* ways at once — Area × Category × quarter — formulas get tedious. That's what PivotTables are for.
 
+## Further learning
+
+**Official Microsoft docs**
+- [SUMIFS function](https://support.microsoft.com/office/c9e748f5-7ea7-455d-9406-611cebce642b) · [COUNTIFS function](https://support.microsoft.com/office/dda3dc6e-f74e-4aee-88bc-aa8c2a866842) · [AVERAGEIFS function](https://support.microsoft.com/office/48910c45-1fc0-4389-a028-f7c5c3001690)
+- [IF function](https://support.microsoft.com/office/69aed7c9-4e8a-4755-a9bc-aa8bbff73be2) · [SUBTOTAL function](https://support.microsoft.com/office/7b027003-f060-4ade-9040-e478765b9939)
+- [Filter data in a range or table](https://support.microsoft.com/en-us/office/filter-data-in-a-range-or-table-in-excel-01832226-31b5-4568-8806-38c37dcc180e)
+
+**Video:** [SUMIFS / COUNTIFS — video tutorials](https://www.youtube.com/results?search_query=excel+sumifs+countifs+tutorial)
+
 Take the [Stage 3 quiz](../quizzes/module-3), then continue to [Stage 4 — Pivot & rank](04-pivot-rank).

@@ -2,13 +2,13 @@
   "title": "Stage 5 quiz — Present & capstone",
   "questions": [
     {
-      "question": "On a one-page summary, where should the headline KPI (e.g. total revenue) go?",
+      "question": "On a one-page summary, where should the headline KPI (e.g. net sales) go?",
       "options": ["Top-left — where eyes land first", "Bottom-right", "Centre, in a chart", "It doesn't matter"],
       "answer": 0,
       "explanation": "Readers start top-left. Put the single most important number there, big and formatted."
     },
     {
-      "question": "Which conditional-formatting option instantly flags repeated customer names or order IDs?",
+      "question": "Which conditional-formatting option instantly flags repeated customer names?",
       "options": [
         "Highlight Cells Rules → Duplicate Values",
         "Color Scales",
@@ -19,35 +19,35 @@
       "explanation": "Duplicate Values highlights repeats — a fast second check after Stage 1's Remove Duplicates."
     },
     {
-      "question": "To turn a Region × Quarter grid into a heat map, you use…",
+      "question": "To turn a Category × Area grid into a heat map, you use…",
       "options": ["Color Scales", "A pivot chart", "Data Bars", "A slicer"],
       "answer": 0,
-      "explanation": "Color Scales shade cells by value, making a grid readable at a glance as a heat map."
+      "explanation": "Color Scales shade cells by value, making the grid readable at a glance."
     },
     {
-      "question": "You want every refunded order's whole row to turn red. Which conditional-formatting rule?",
+      "question": "You want every Return line's whole row to turn red. Which rule?",
       "options": [
-        "New Rule → Use a formula → =$L2=\"Refunded\" → red fill",
+        "New Rule → Use a formula → =$C2=\"Return\" → red fill",
         "Top/Bottom Rules → Below Average",
-        "Data Bars on the Status column",
+        "Data Bars on the InvoiceType column",
         "Highlight Cells → Greater Than"
       ],
       "answer": 0,
-      "explanation": "A formula rule referencing the locked Status column ($L2) applies the format to the entire row."
+      "explanation": "A formula rule referencing the locked InvoiceType column ($C2) applies the format to the entire row."
     },
     {
-      "question": "Which custom number format displays 1234567 as \"$1.2M\"?",
+      "question": "Which custom number format shows 1250000 as \"AED 1,250,000\"?",
       "options": [
-        "[>=1000000]\"$\"#,##0,,\"M\";[>=1000]\"$\"#,##0,\"K\";\"$\"#,##0",
-        "\"$\"#,##0.00",
+        "\"AED\" #,##0",
         "0.0%",
+        "#,##0.00",
         "General"
       ],
       "answer": 0,
-      "explanation": "Each comma after the format scales the displayed number by a thousand; the conditions pick M, K, or plain."
+      "explanation": "Quoted text in a number format prints literally; #,##0 adds thousands separators with no decimals."
     },
     {
-      "question": "In the capstone, why prefer a live formula (e.g. SUMIFS) over typing the number you read off a pivot?",
+      "question": "In the capstone, why prefer a live formula (e.g. SUMIFS) over typing the number off a pivot?",
       "options": [
         "It looks more professional",
         "The answer stays correct if the data changes or is refreshed",

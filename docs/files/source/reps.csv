@@ -1,16 +1,16 @@
-SalesRep,Region,Manager,AnnualQuota,CommissionRate
-Amaya Suzuki,East,Mei Tanaka,220000,0.06
-Anna Becker,North,Helena Vogt,180000,0.04
-Carlos Mendes,West,Frank Boateng,220000,0.05
-Daniel Park,East,Mei Tanaka,260000,0.05
-Eva Schmidt,Central,Nadia Petrova,180000,0.05
-Hannah Cohen,West,Frank Boateng,220000,0.06
-Jin Wei,West,Frank Boateng,260000,0.08
-Liam O'Connor,North,Helena Vogt,220000,0.04
-Marco Rossi,South,Diego Alvarez,240000,0.04
-Olivia Brown,Central,Nadia Petrova,220000,0.04
-Priya Sharma,North,Helena Vogt,180000,0.04
-Ravi Patel,Central,Nadia Petrova,280000,0.05
-Sofia Lindqvist,East,Mei Tanaka,220000,0.06
-Tom Nguyen,South,Diego Alvarez,180000,0.04
-Yara Haddad,South,Diego Alvarez,200000,0.08
+SalesRep,Manager,AnnualQuota
+Anjali Menon,Sandra D'Souza,2925000
+Arjun Pillai,Sandra D'Souza,1450000
+Ayesha Siddiqui,Sandra D'Souza,500000
+Daniel Costa,Tariq Aziz,525000
+Fatima Khan,Tariq Aziz,1325000
+Grace Fernandes,Khalid Rahman,1675000
+Joseph Mathew,Khalid Rahman,825000
+Lina Aboud,Tariq Aziz,400000
+Mariam Hassan,Khalid Rahman,1300000
+Mohammed Saleh,Tariq Aziz,1350000
+Omar Haddad,Sandra D'Souza,1725000
+Priya Raj,Khalid Rahman,1000000
+Rashid Al Marzooqi,Khalid Rahman,3225000
+Sunil Kumar,Tariq Aziz,1200000
+Vikram Nair,Sandra D'Souza,775000

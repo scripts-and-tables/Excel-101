@@ -2,65 +2,60 @@
   "title": "Stage 3 quiz — Explore & summarize",
   "questions": [
     {
-      "question": "A filter is hiding half your rows. Which formula totals ONLY the visible rows?",
+      "question": "Returns are stored with negative values. What does =SUM(Sales[SalesValue]) give you?",
+      "options": ["Gross sales", "Net sales (returns already deducted)", "Total returns", "An error"],
+      "answer": 1,
+      "explanation": "Because returns are negative, a plain SUM nets them out automatically — that's your net sales."
+    },
+    {
+      "question": "A filter is hiding rows. Which formula totals ONLY the visible ones?",
       "options": ["=SUM(M2:M2001)", "=SUBTOTAL(9, M2:M2001)", "=SUMIF(M2:M2001)", "=TOTAL(M2:M2001)"],
       "answer": 1,
-      "explanation": "SUM always adds every row. SUBTOTAL(9, …) adds only the visible (filtered-in) rows. 9 = SUM, 101 = AVERAGE, 103 = COUNT."
+      "explanation": "SUM adds every row; SUBTOTAL(9, …) adds only the visible (filtered-in) rows. 9 = SUM, 101 = AVERAGE, 103 = COUNT."
     },
     {
-      "question": "What is the correct argument order for SUMIFS?",
+      "question": "Which formula gives gross sales (Sales invoices only, excluding returns)?",
       "options": [
-        "=SUMIFS(criteria_range, criteria, sum_range)",
-        "=SUMIFS(sum_range, criteria_range1, criteria1, …)",
-        "=SUMIFS(criteria1, criteria2, sum_range)",
-        "=SUMIFS(sum_range, criteria1, criteria2)"
-      ],
-      "answer": 1,
-      "explanation": "SUMIFS starts with the column to total, then pairs of (criteria column, criteria value). All conditions must be true."
-    },
-    {
-      "question": "Which formula counts orders that are 'Closed Won' in the West?",
-      "options": [
-        "=COUNTIFS(Sales[Status],\"Closed Won\",Sales[Region],\"West\")",
-        "=COUNT(Sales[Status],\"Closed Won\")",
-        "=SUMIFS(Sales[Status],\"Closed Won\")",
-        "=COUNTA(Sales[Region],\"West\")"
+        "=SUMIFS(Sales[SalesValue], Sales[InvoiceType], \"Sales\")",
+        "=SUM(Sales[SalesValue])",
+        "=COUNTIFS(Sales[InvoiceType], \"Sales\")",
+        "=AVERAGEIFS(Sales[SalesValue], Sales[InvoiceType], \"Sales\")"
       ],
       "answer": 0,
-      "explanation": "COUNTIFS counts rows meeting all conditions — Status = Closed Won AND Region = West."
+      "explanation": "SUMIFS totals SalesValue only where InvoiceType is 'Sales' — returns are excluded."
     },
     {
-      "question": "How do you compute win rate (orders won ÷ all orders)?",
+      "question": "How do you compute the return rate (returns ÷ gross) as a positive percentage?",
       "options": [
-        "=COUNTIFS(Sales[Status],\"Closed Won\") / COUNTA(Sales[OrderID])",
-        "=SUM(Sales[Status]) / COUNT(Sales[OrderID])",
-        "=AVERAGE(Sales[Status])",
-        "=COUNTIFS(Sales[Status],\"Closed Won\") * COUNTA(Sales[OrderID])"
+        "=-SUMIFS(Sales[SalesValue],Sales[InvoiceType],\"Return\") / SUMIFS(Sales[SalesValue],Sales[InvoiceType],\"Sales\")",
+        "=COUNT(Sales[InvoiceType])",
+        "=SUM(Sales[SalesValue]) / COUNTA(Sales[OrderNumber])",
+        "=AVERAGE(Sales[SalesValue])"
       ],
       "answer": 0,
-      "explanation": "Win rate is the count of won orders divided by the total order count, formatted as a percentage."
+      "explanation": "Returns sum to a negative number, so negate it and divide by gross sales to get a positive return-rate %."
     },
     {
-      "question": "A rep's commission is their Closed-Won revenue × their rate (which lives in the Reps table). Which formula is right?",
+      "question": "The Sales table has a BrandManager column (added by VLOOKUP in Stage 2). How do you get one manager's net sales?",
       "options": [
-        "=SUMIFS(Sales[Revenue],Sales[SalesRep],\"Anna Becker\",Sales[Status],\"Closed Won\") * VLOOKUP(\"Anna Becker\",Reps,5,FALSE)",
-        "=SUMIFS(Sales[Revenue],Sales[SalesRep],\"Anna Becker\") + VLOOKUP(\"Anna Becker\",Reps,5,FALSE)",
-        "=VLOOKUP(\"Anna Becker\",Reps,5,FALSE)",
-        "=AVERAGEIFS(Sales[Revenue],Sales[SalesRep],\"Anna Becker\")"
+        "=SUMIFS(Sales[SalesValue], Sales[BrandManager], \"Imran Sheikh\")",
+        "=VLOOKUP(\"Imran Sheikh\", Brands, 3, FALSE)",
+        "=COUNTIFS(Sales[BrandManager], \"Imran Sheikh\")",
+        "=SUM(Sales[BrandManager])"
       ],
       "answer": 0,
-      "explanation": "Multiply her Closed-Won revenue (SUMIFS) by her rate, pulled from Reps with VLOOKUP — clean, enrich and summarize working together."
+      "explanation": "With the manager on every row, SUMIFS totals SalesValue for that BrandManager."
     },
     {
-      "question": "Fastest way to copy a formula down a whole Table column?",
+      "question": "How do you compute a rep's quota attainment?",
       "options": [
-        "Type it once — an Excel Table auto-fills the column",
-        "Copy and paste into each cell",
-        "Use the SUM function",
-        "Retype it in every row"
+        "=SUMIFS(Sales[SalesValue],Sales[SalesRep],\"Mohammed Saleh\") / VLOOKUP(\"Mohammed Saleh\",Reps,3,FALSE)",
+        "=SUMIFS(Sales[SalesValue],Sales[SalesRep],\"Mohammed Saleh\") * VLOOKUP(\"Mohammed Saleh\",Reps,3,FALSE)",
+        "=VLOOKUP(\"Mohammed Saleh\",Reps,3,FALSE)",
+        "=AVERAGEIFS(Sales[SalesValue],Sales[SalesRep],\"Mohammed Saleh\")"
       ],
       "answer": 0,
-      "explanation": "In a Table, one formula fills the column automatically. In a plain range, double-click the fill handle or press Ctrl+D."
+      "explanation": "Attainment = the rep's net sales (SUMIFS) divided by their quota, pulled from the Reps table with VLOOKUP."
     }
   ]
 }

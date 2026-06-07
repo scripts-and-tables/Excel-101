@@ -42,7 +42,8 @@ permalink: /downloads/
     <h2 class="section-title">Raw dataset (synthetic)</h2>
     <ul class="downloads__list">
       <li><a download href="{{ '/files/source/sales_data.csv' | relative_url }}">sales_data.csv</a> — the order-line export (2,000 rows)</li>
-      <li><a download href="{{ '/files/source/reps.csv' | relative_url }}">reps.csv</a> — the Sales Rep reference table (manager, quota, commission rate)</li>
+      <li><a download href="{{ '/files/source/reps.csv' | relative_url }}">reps.csv</a> — Sales Rep reference (manager, annual quota)</li>
+      <li><a download href="{{ '/files/source/brands.csv' | relative_url }}">brands.csv</a> — Brand reference (category, brand manager)</li>
     </ul>
 
     <p class="downloads__back"><a href="{{ '/' | relative_url }}">← Back to the course</a></p>

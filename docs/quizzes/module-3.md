@@ -2,7 +2,7 @@
 layout: lesson
 title: "Stage 3 quiz"
 short_title: "Quiz"
-subtitle: "Six questions on AutoFilter, SUBTOTAL, SUMIFS/COUNTIFS/AVERAGEIFS, KPIs and commission."
+subtitle: "Six questions on AutoFilter, SUBTOTAL, SUMIFS/COUNTIFS/AVERAGEIFS, net sales, return rate and quota."
 module: 3
 is_quiz: true
 ---

@@ -1,13 +1,20 @@
 """Generate the synthetic sales datasets used throughout the course.
 
-Outputs:
-- ../files/source/sales_data.csv  — the main order-line dataset
-- ../files/source/reps.csv        — a small Sales Rep reference table
-                                     (lookup target for the VLOOKUP module + capstone)
+UAE FMCG distributor context: sales of Food and HPC (home & personal care) brands
+to Dubai supermarket chains, across their branches, by sales reps.
 
-Deterministic — running it again produces the same files.
-Includes a few deliberate "dirty" rows so the Module 1 cleanup exercises have
-something to clean.
+Outputs:
+- ../docs/files/source/sales_data.csv  — order-line sales/returns export
+- ../docs/files/source/reps.csv         — Sales Rep reference (rep covers customers)
+- ../docs/files/source/brands.csv       — Brand reference (brand manager covers brands)
+
+EVERYTHING IS SYNTHETIC. Customers are real Dubai supermarket *chain names* used only
+as realistic labels; all codes, branches, reps, managers, brands, quantities and
+values are invented from a fixed seed. The BRANDS ARE FICTIONAL — they belong to no
+real company and are deliberately unrelated to any Transmed portfolio.
+
+Deterministic — re-running produces the same files. A few deliberately "dirty" rows
+are injected so the Module 1 cleanup exercises have something to clean.
 """
 
 from __future__ import annotations
@@ -21,66 +28,65 @@ SEED = 20260101
 ROW_COUNT = 2000
 START_DATE = date(2024, 1, 1)
 END_DATE = date(2025, 12, 31)
+# Brands' base prices are per-unit; distributors sell by the CASE, so scale up to
+# realistic wholesale line values (and therefore realistic AED totals & quotas).
+CASE_FACTOR = 100
 
-REGIONS = ["North", "South", "East", "West", "Central"]
+# Real Dubai supermarket chains (Food + HPC) — used only as labels. (name, customer code)
+CUSTOMERS = [
+    ("Carrefour", 1001),
+    ("Lulu Hypermarket", 1002),
+    ("Spinneys", 1003),
+    ("Choithrams", 1004),
+    ("Union Coop", 1005),
+    ("Waitrose", 1006),
+    ("Al Maya Supermarket", 1007),
+    ("Nesto Hypermarket", 1008),
+    ("West Zone Supermarket", 1009),
+    ("Géant", 1010),
+    ("Aswaaq", 1011),
+    ("Viva Supermarket", 1012),
+    ("Grandiose Supermarket", 1013),
+    ("Day to Day", 1014),
+    ("Safeer Market", 1015),
+]
 
-SALES_REPS = {
-    "North":   ["Anna Becker", "Liam O'Connor", "Priya Sharma"],
-    "South":   ["Marco Rossi", "Yara Haddad", "Tom Nguyen"],
-    "East":    ["Sofia Lindqvist", "Daniel Park", "Amaya Suzuki"],
-    "West":    ["Carlos Mendes", "Hannah Cohen", "Jin Wei"],
-    "Central": ["Olivia Brown", "Ravi Patel", "Eva Schmidt"],
+# Dubai areas a branch can sit in (also the rep territory dimension).
+AREAS = [
+    "Deira", "Bur Dubai", "Al Barsha", "Jumeirah", "Mirdif", "Dubai Marina",
+    "Downtown", "Al Quoz", "Karama", "Jebel Ali", "Festival City",
+    "International City", "Silicon Oasis", "JLT", "Discovery Gardens",
+    "Motor City", "Al Qusais", "Satwa",
+]
+
+# Sales reps -> manager. Reps cover Dubai territories (areas).
+SALES_MANAGERS = ["Khalid Rahman", "Sandra D'Souza", "Tariq Aziz"]
+SALES_REPS = [
+    "Rashid Al Marzooqi", "Anjali Menon", "Mohammed Saleh", "Grace Fernandes",
+    "Vikram Nair", "Fatima Khan", "Joseph Mathew", "Ayesha Siddiqui",
+    "Daniel Costa", "Priya Raj", "Omar Haddad", "Sunil Kumar",
+    "Mariam Hassan", "Arjun Pillai", "Lina Aboud",
+]
+
+# Brand managers — people who each cover a set of brands ("category managers").
+BRAND_MANAGERS = ["Imran Sheikh", "Rebecca Thomas", "Hassan Ali",
+                  "Divya Krishnan", "Noor Abbas"]
+
+# FICTIONAL brands by category (no real company / not Transmed). (brand, base unit price AED)
+BRANDS = {
+    "Food": [
+        ("Crunchio", 4.5), ("Goldenfields", 9.0), ("FreshNest", 6.5),
+        ("Cedarna", 12.0), ("Oasis Delights", 7.5), ("SunHarvest", 5.0),
+        ("Bakehouse Co", 8.0), ("Zaytoona", 15.0), ("DeliMia", 10.5),
+        ("Marhaba Gold", 6.0),
+    ],
+    "HPC": [
+        ("Lumora", 18.0), ("Cleanova", 11.0), ("Mintleaf", 7.0),
+        ("Auracare", 22.0), ("Silkene", 16.0), ("PureGlow", 25.0),
+        ("FreshLine", 9.5), ("Caressa", 13.0), ("Sparklo", 8.5),
+        ("Verdé", 19.0),
+    ],
 }
-
-# Each region rolls up to one sales manager — used to build the Reps lookup table.
-REGION_MANAGERS = {
-    "North":   "Helena Vogt",
-    "South":   "Diego Alvarez",
-    "East":    "Mei Tanaka",
-    "West":    "Frank Boateng",
-    "Central": "Nadia Petrova",
-}
-
-CATEGORIES = {
-    "Hardware":   ["Laptop Pro 14", "Laptop Pro 16", "Desktop Mini", "Monitor 27\"", "Monitor 32\"", "Docking Station"],
-    "Accessories":["Wireless Mouse", "Mechanical Keyboard", "USB-C Hub", "Webcam HD", "Headset Pro"],
-    "Software":   ["Office Suite", "Antivirus 1y", "VPN 1y", "Design Suite", "Project Tracker"],
-    "Services":   ["Setup Service", "Onsite Training", "Premium Support", "Data Migration"],
-}
-
-PRICE_BY_PRODUCT = {
-    "Laptop Pro 14": 1299, "Laptop Pro 16": 1899, "Desktop Mini": 899,
-    "Monitor 27\"": 329,  "Monitor 32\"": 549,  "Docking Station": 189,
-    "Wireless Mouse": 39, "Mechanical Keyboard": 119, "USB-C Hub": 59,
-    "Webcam HD": 89, "Headset Pro": 149,
-    "Office Suite": 199, "Antivirus 1y": 49, "VPN 1y": 69,
-    "Design Suite": 599, "Project Tracker": 129,
-    "Setup Service": 249, "Onsite Training": 1500,
-    "Premium Support": 899, "Data Migration": 1200,
-}
-
-COST_RATIO = {
-    "Hardware":    0.72,
-    "Accessories": 0.55,
-    "Software":    0.30,
-    "Services":    0.40,
-}
-
-CUSTOMER_PREFIXES = ["Acme", "Globex", "Initech", "Umbrella", "Wayne", "Stark",
-                     "Wonka", "Hooli", "Pied Piper", "Cyberdyne", "Soylent",
-                     "Tyrell", "Vandelay", "Aperture", "Black Mesa", "Massive Dynamic",
-                     "Oscorp", "Weyland", "Rekall", "Gringotts"]
-CUSTOMER_SUFFIXES = ["Corp", "Industries", "LLC", "Group", "GmbH", "Holdings", "Partners", "Ltd"]
-
-STATUSES_WEIGHTED = [("Closed Won", 0.78), ("Closed Won", 0.0),  # weight via duplicates
-                     ("Refunded", 0.05), ("Pending", 0.10), ("Cancelled", 0.07)]
-
-
-def weighted_choice(rng: random.Random, weighted: list[tuple[str, float]]) -> str:
-    pool: list[str] = []
-    for value, weight in weighted:
-        pool.extend([value] * max(1, int(weight * 100)))
-    return rng.choice(pool)
 
 
 def random_date(rng: random.Random) -> date:
@@ -88,113 +94,144 @@ def random_date(rng: random.Random) -> date:
     return START_DATE + timedelta(days=rng.randint(0, delta))
 
 
-def make_reps(rng: random.Random) -> list[dict]:
-    """Build the Sales Rep reference table: rep -> region, manager, annual quota.
-
-    This is the lookup target for the VLOOKUP module and the capstone
-    (quota-attainment KPI). Quotas are deterministic, in round thousands.
-    """
-    reps: list[dict] = []
-    for region, names in SALES_REPS.items():
-        for name in names:
-            quota = rng.choice([180_000, 200_000, 220_000, 240_000, 260_000, 280_000])
-            # Commission rate is a simple tier — the lookup target for the
-            # Stage 3 commission calc (rate VLOOKUP'd from this table).
-            rate = rng.choice([0.04, 0.05, 0.06, 0.07, 0.08])
-            reps.append({
-                "SalesRep": name,
-                "Region": region,
-                "Manager": REGION_MANAGERS[region],
-                "AnnualQuota": quota,
-                "CommissionRate": rate,
+def build_branches(rng: random.Random) -> list[dict]:
+    """For each customer, create 3-6 branches in distinct Dubai areas."""
+    branches: list[dict] = []
+    code = 50001
+    for name, cust_code in CUSTOMERS:
+        n = rng.randint(3, 6)
+        areas = rng.sample(AREAS, n)
+        for area in areas:
+            branches.append({
+                "Customer": name,
+                "CustomerCode": cust_code,
+                "Branch": f"{name} - {area}",
+                "BranchCode": code,
+                "Area": area,
             })
-    reps.sort(key=lambda r: r["SalesRep"])
-    return reps
+            code += 1
+    return branches
 
 
-def make_customers(rng: random.Random, n: int = 80) -> list[str]:
-    customers: set[str] = set()
-    while len(customers) < n:
-        customers.add(f"{rng.choice(CUSTOMER_PREFIXES)} {rng.choice(CUSTOMER_SUFFIXES)}")
-    return sorted(customers)
+def build_reps() -> tuple[list[dict], dict]:
+    """Reps (SalesRep + Manager) + an area -> rep territory map.
+    Quotas are assigned later, from each rep's actual sales (see main)."""
+    reps = [{"SalesRep": name, "Manager": SALES_MANAGERS[i % len(SALES_MANAGERS)]}
+            for i, name in enumerate(SALES_REPS)]
+    # Assign every area to a rep (territory); reps may cover several areas.
+    area_to_rep = {area: SALES_REPS[i % len(SALES_REPS)] for i, area in enumerate(AREAS)}
+    return reps, area_to_rep
+
+
+def build_brands() -> list[dict]:
+    """Brand reference table: each brand -> its category and its brand manager."""
+    brands: list[dict] = []
+    for category, items in BRANDS.items():
+        # two managers per category, plus Noor Abbas covering a premium slice
+        if category == "Food":
+            pool = ["Imran Sheikh", "Rebecca Thomas", "Noor Abbas"]
+        else:
+            pool = ["Hassan Ali", "Divya Krishnan", "Noor Abbas"]
+        for j, (brand, _price) in enumerate(items):
+            brands.append({
+                "Brand": brand,
+                "Category": category,
+                "BrandManager": pool[j % len(pool)],
+            })
+    brands.sort(key=lambda b: b["Brand"])
+    return brands
 
 
 def main() -> None:
     rng = random.Random(SEED)
-    reps = make_reps(rng)
-    customers = make_customers(rng)
+    branches = build_branches(rng)
+    reps, area_to_rep = build_reps()
+    brand_list = [(b, price, cat) for cat, items in BRANDS.items() for (b, price) in items]
 
     rows: list[dict] = []
     for i in range(1, ROW_COUNT + 1):
-        region = rng.choice(REGIONS)
-        rep = rng.choice(SALES_REPS[region])
-        category = rng.choice(list(CATEGORIES.keys()))
-        product = rng.choice(CATEGORIES[category])
-        unit_price = PRICE_BY_PRODUCT[product]
-        quantity = rng.choices([1, 2, 3, 4, 5, 8, 10, 15, 25],
-                               weights=[28, 22, 16, 10, 8, 6, 5, 3, 2])[0]
-        # Discount: most orders 0, some 5/10/15/20%
-        discount = rng.choices([0.00, 0.05, 0.10, 0.15, 0.20],
-                               weights=[55, 18, 14, 8, 5])[0]
-        cost = round(unit_price * COST_RATIO[category], 2)
-        status = weighted_choice(rng, STATUSES_WEIGHTED)
+        br = rng.choice(branches)
+        brand, base_price, category = rng.choice(brand_list)
+        rep = area_to_rep[br["Area"]]
+        # ~7% of lines are returns (negative qty & value)
+        is_return = rng.random() < 0.07
+        qty = rng.choices([1, 2, 3, 5, 8, 12, 20, 40, 60, 100],
+                          weights=[20, 18, 15, 12, 10, 8, 7, 5, 3, 2])[0]
+        # per-case price wobbles a little around the brand base (scaled to cases)
+        unit_price = round(base_price * CASE_FACTOR * rng.uniform(0.9, 1.25), 2)
+        value = round(unit_price * qty, 2)
+        if is_return:
+            qty = -qty
+            value = -value
         rows.append({
-            "OrderID": f"SO-{10000 + i}",
-            "OrderDate": random_date(rng).isoformat(),
-            "Region": region,
+            "OrderNumber": f"SO-{100000 + i}",
+            "Date": random_date(rng).isoformat(),
+            "InvoiceType": "Return" if is_return else "Sales",
+            "CustomerCode": br["CustomerCode"],
+            "Customer": br["Customer"],
+            "BranchCode": br["BranchCode"],
+            "Branch": br["Branch"],
+            "Area": br["Area"],
             "SalesRep": rep,
-            "Customer": rng.choice(customers),
-            "Product": product,
+            "Brand": brand,
             "Category": category,
-            "UnitPrice": unit_price,
-            "Quantity": quantity,
-            "Discount": discount,
-            "Cost": cost,
-            "Status": status,
+            "SalesQuantity": qty,
+            "SalesValue": value,
         })
 
-    # Inject deliberate dirty data for the Module 1 cleanup exercise
-    # 1) Trailing/leading spaces on a few customer names
+    # ---- inject deliberate "dirty" rows for the Module 1 cleanup exercises ----
+    # 1) leading/trailing spaces on a few Customer names
     for idx in (12, 47, 233, 871, 1402):
         if idx < len(rows):
             rows[idx]["Customer"] = "  " + rows[idx]["Customer"] + " "
-    # 2) Inconsistent casing on Region
+    # 2) inconsistent casing on Area
     for idx in (88, 410, 905, 1567):
         if idx < len(rows):
-            rows[idx]["Region"] = rows[idx]["Region"].upper()
-    # 3) Two exact duplicate orders (different IDs but otherwise identical content)
-    if len(rows) >= 2:
-        dup_src = dict(rows[5])
-        dup_src["OrderID"] = "SO-19998"
-        rows.append(dup_src)
-        dup_src2 = dict(rows[42])
-        dup_src2["OrderID"] = "SO-19999"
-        rows.append(dup_src2)
+            rows[idx]["Area"] = rows[idx]["Area"].upper()
+    # 3) two exact duplicate order lines (fresh OrderNumber, otherwise identical)
+    if len(rows) >= 50:
+        dup1 = dict(rows[5]);  dup1["OrderNumber"] = "SO-199998"; rows.append(dup1)
+        dup2 = dict(rows[42]); dup2["OrderNumber"] = "SO-199999"; rows.append(dup2)
 
-    # Sort by date for nicer presentation
-    rows.sort(key=lambda r: r["OrderDate"])
+    rows.sort(key=lambda r: r["Date"])
+
+    # Data-driven annual quotas: base each rep's quota on their own net sales so
+    # quota-attainment KPIs land in a believable ~80-125% range (rounded to 25k AED).
+    rep_net: dict[str, float] = {}
+    for r in rows:
+        rep_net[r["SalesRep"]] = rep_net.get(r["SalesRep"], 0.0) + r["SalesValue"]
+    for rep in reps:
+        net = rep_net.get(rep["SalesRep"], 0.0)
+        quota = net / rng.uniform(0.85, 1.25)
+        rep["AnnualQuota"] = max(25_000, int(round(quota / 25_000)) * 25_000)
+    reps.sort(key=lambda r: r["SalesRep"])
 
     out_path = Path(__file__).resolve().parent.parent / "docs" / "files" / "source" / "sales_data.csv"
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    fieldnames = ["OrderID", "OrderDate", "Region", "SalesRep", "Customer",
-                  "Product", "Category", "UnitPrice", "Quantity", "Discount",
-                  "Cost", "Status"]
+    fieldnames = ["OrderNumber", "Date", "InvoiceType", "CustomerCode", "Customer",
+                  "BranchCode", "Branch", "Area", "SalesRep", "Brand", "Category",
+                  "SalesQuantity", "SalesValue"]
     with out_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames)
         writer.writeheader()
         writer.writerows(rows)
-
     print(f"Wrote {len(rows)} rows to {out_path}")
 
-    # Reps reference table (lookup target for the VLOOKUP module + capstone)
     reps_path = out_path.parent / "reps.csv"
-    rep_fields = ["SalesRep", "Region", "Manager", "AnnualQuota", "CommissionRate"]
+    rep_fields = ["SalesRep", "Manager", "AnnualQuota"]
     with reps_path.open("w", newline="", encoding="utf-8") as f:
         writer = csv.DictWriter(f, fieldnames=rep_fields)
         writer.writeheader()
         writer.writerows(reps)
-
     print(f"Wrote {len(reps)} reps to {reps_path}")
+
+    brands_ref = build_brands()
+    brands_path = out_path.parent / "brands.csv"
+    with brands_path.open("w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=["Brand", "Category", "BrandManager"])
+        writer.writeheader()
+        writer.writerows(brands_ref)
+    print(f"Wrote {len(brands_ref)} brands to {brands_path}")
 
 
 if __name__ == "__main__":

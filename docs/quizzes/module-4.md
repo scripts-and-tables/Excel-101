@@ -2,7 +2,7 @@
 layout: lesson
 title: "Stage 4 quiz"
 short_title: "Quiz"
-subtitle: "Six questions on PivotTables, grouping, slicers, the rep leaderboard and refresh."
+subtitle: "Six questions on PivotTables, grouping, slicers, the rep & brand-manager leaderboards and refresh."
 module: 4
 is_quiz: true
 ---

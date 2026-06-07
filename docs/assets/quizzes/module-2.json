@@ -5,27 +5,27 @@
       "question": "What should the 4th argument of VLOOKUP almost always be?",
       "options": ["TRUE (approximate match)", "FALSE (exact match)", "0.5", "Left blank"],
       "answer": 1,
-      "explanation": "FALSE forces an exact match. TRUE (or omitting it) does an approximate match that silently returns wrong answers on unsorted data."
+      "explanation": "FALSE forces an exact match. TRUE (or omitting it) does an approximate match that silently returns wrong answers."
     },
     {
       "question": "VLOOKUP matches your lookup value against which part of the table?",
       "options": ["Any column you name", "The first (leftmost) column", "The last column", "The header row"],
       "answer": 1,
-      "explanation": "VLOOKUP only searches the first column and returns a value from a column to its right — it can't look left."
+      "explanation": "VLOOKUP searches only the first column and returns a value from a column to its right — it can't look left."
     },
     {
-      "question": "=VLOOKUP([@SalesRep], Reps, 5, FALSE) returns…",
+      "question": "To bring each brand's manager onto the Sales table, which formula is right?",
       "options": [
-        "The 5th column of Reps (Commission Rate) for the matching rep",
-        "The 5th rep in the list",
-        "The rep in row 5",
-        "An error — you can't use a table name"
+        "=VLOOKUP([@Brand], Brands, 3, FALSE)",
+        "=VLOOKUP([@BrandManager], Brands, 1, FALSE)",
+        "=VLOOKUP(Brands, [@Brand], 3, FALSE)",
+        "=VLOOKUP([@Brand], Reps, 3, FALSE)"
       ],
       "answer": 0,
-      "explanation": "The 5 is the column index — it returns column 5 (CommissionRate) of Reps for the row whose first column matches the rep."
+      "explanation": "Look up the Brand in the Brands table and return column 3 (BrandManager). The Reps table is for sales reps, not brands."
     },
     {
-      "question": "Two cells look identical but VLOOKUP returns #N/A. What's the most common cause?",
+      "question": "Two cells look identical but VLOOKUP returns #N/A. Most common cause?",
       "options": [
         "One value is a number stored as text, or has trailing spaces",
         "The table is too big",
@@ -33,7 +33,7 @@
         "You need to press F9"
       ],
       "answer": 0,
-      "explanation": "Type mismatches (text vs number) and invisible trailing spaces are the classic #N/A causes. Fix with VALUE and TRIM (Stage 1)."
+      "explanation": "Type mismatches (text vs number) and invisible spaces are the classic #N/A causes. Fix with VALUE and TRIM (Stage 1)."
     },
     {
       "question": "How do you turn a VLOOKUP #N/A into a friendly label like 'unknown'?",
@@ -47,7 +47,7 @@
       "explanation": "IFERROR(value, fallback) returns the fallback when the formula errors, keeping your sheet clean."
     },
     {
-      "question": "Why does this course teach VLOOKUP as the main lookup, with XLOOKUP only as a note?",
+      "question": "Why teach VLOOKUP as the main lookup, with XLOOKUP only as a note?",
       "options": [
         "XLOOKUP is being removed from Excel",
         "VLOOKUP is in legacy files everywhere and works in older Excel; XLOOKUP needs Excel 365/2021+",
@@ -55,7 +55,7 @@
         "VLOOKUP is faster on every dataset"
       ],
       "answer": 1,
-      "explanation": "You'll inherit VLOOKUP constantly, and XLOOKUP doesn't exist before Excel 2021. Know VLOOKUP cold; use XLOOKUP when everyone's on a modern version."
+      "explanation": "You'll inherit VLOOKUP constantly, and XLOOKUP doesn't exist before Excel 2021. Use XLOOKUP when everyone's on a modern version."
     }
   ]
 }

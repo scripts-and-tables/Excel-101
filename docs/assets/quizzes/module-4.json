@@ -2,18 +2,18 @@
   "title": "Stage 4 quiz — Pivot & rank",
   "questions": [
     {
-      "question": "To total revenue by region, which fields go where in a PivotTable?",
+      "question": "To total net sales by area, which fields go where in a PivotTable?",
       "options": [
-        "Region → Rows, Revenue → Values",
-        "Region → Values, Revenue → Rows",
-        "Region → Filters, Revenue → Columns",
+        "Area → Rows, SalesValue → Values",
+        "Area → Values, SalesValue → Rows",
+        "Area → Filters, SalesValue → Columns",
         "Both into Values"
       ],
       "answer": 0,
       "explanation": "Categories you list down the side go in Rows; the numbers you summarise go in Values."
     },
     {
-      "question": "How do you turn a column of order dates into months and quarters in a pivot?",
+      "question": "How do you turn order dates into months and quarters in a pivot?",
       "options": [
         "Right-click a date → Group → tick Months/Quarters/Years",
         "Sort the dates",
@@ -21,10 +21,10 @@
         "Drag the date into Filters"
       ],
       "answer": 0,
-      "explanation": "Right-click any date in the pivot → Group rolls up by Year/Quarter/Month. It needs real dates (Stage 1)."
+      "explanation": "Right-click any date → Group rolls up by Year/Quarter/Month. It needs real dates (Stage 1)."
     },
     {
-      "question": "Which feature shows each region's share of total revenue as a percentage?",
+      "question": "Which feature shows each brand's share of total sales as a percentage?",
       "options": [
         "Value Field Settings → Show Values As → % of Grand Total",
         "Conditional formatting",
@@ -43,21 +43,21 @@
         "It's not possible"
       ],
       "answer": 0,
-      "explanation": "Report Connections links one slicer to multiple pivots — one click filters them all. The core trick behind a simple dashboard."
+      "explanation": "Report Connections links one slicer to multiple pivots — one click filters them all."
     },
     {
-      "question": "To build a Top-5 rep leaderboard from a pivot of rep revenue, you…",
+      "question": "You want 'net sales by brand manager'. Which pivot Rows field gives it directly?",
       "options": [
-        "Right-click a rep → Filter → Top 10 → set to 5, then sort Largest to Smallest",
-        "Delete every rep below 5th",
-        "Use VLOOKUP",
-        "Add a slicer for each rep"
+        "BrandManager (the column VLOOKUP'd in Stage 2)",
+        "Brand only",
+        "SalesRep",
+        "Customer"
       ],
       "answer": 0,
-      "explanation": "Value Filter → Top 10 (set to 5) plus a Largest-to-Smallest sort gives a clean top-5 leaderboard."
+      "explanation": "Because Stage 2 added BrandManager to every row, you can put it straight on Rows and sum SalesValue."
     },
     {
-      "question": "You added new orders to the Sales table but the pivot hasn't changed. What do you do?",
+      "question": "You added new lines to the Sales table but the pivot hasn't changed. What do you do?",
       "options": [
         "Right-click the pivot → Refresh (or Data → Refresh All)",
         "Rebuild the pivot from scratch",
@@ -65,7 +65,7 @@
         "Save and reopen the file"
       ],
       "answer": 0,
-      "explanation": "Pivots cache their data — Refresh pulls in the latest. Because Sales is a Table, new rows are included automatically on refresh."
+      "explanation": "Pivots cache their data — Refresh pulls in the latest. Because Sales is a Table, new rows are included on refresh."
     }
   ]
 }

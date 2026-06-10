@@ -160,13 +160,20 @@ def write_sales_table(ws, rows: list[dict], *, table_name: str = "Sales") -> Non
 
 
 def write_sales_range(ws, rows: list[dict]) -> None:
-    """Plain range (raw, for the Stage 1 cleaning exercise)."""
+    """Plain RAW range for the Stage 1 cleaning exercise.
+
+    Deliberately left un-frozen, with SalesQuantity/SalesValue unformatted:
+    freezing the header row (exercise 9) and formatting SalesValue (exercise 10)
+    are the student's job. Only Date and the code columns get a display format so
+    they don't render as raw serial numbers."""
     ws.append(HEADERS)
     for r in rows:
         ws.append(_row_values(r, typed_dates=True))
     _style_header(ws, len(HEADERS))
-    _format_data_rows(ws, ws.max_row)
-    ws.freeze_panes = "A2"
+    for i in range(2, ws.max_row + 1):
+        ws.cell(row=i, column=2).number_format = "yyyy-mm-dd"   # Date
+        ws.cell(row=i, column=4).number_format = "0"            # CustomerCode
+        ws.cell(row=i, column=6).number_format = "0"            # BranchCode
 
 
 def write_sales_enriched(ws, rows: list[dict], *, table_name: str = "Sales") -> None:
@@ -177,8 +184,8 @@ def write_sales_enriched(ws, rows: list[dict], *, table_name: str = "Sales") -> 
     for r in rows:
         ws.append(_row_values(r, typed_dates=True))
     for i in range(2, ws.max_row + 1):
-        ws.cell(row=i, column=14, value=f"=VLOOKUP(I{i},Reps,2,FALSE)")
-        ws.cell(row=i, column=15, value=f"=VLOOKUP(J{i},Brands,3,FALSE)")
+        ws.cell(row=i, column=14, value=f"=VLOOKUP(I{i},Reps[#All],2,FALSE)")
+        ws.cell(row=i, column=15, value=f"=VLOOKUP(J{i},Brands[#All],3,FALSE)")
     table = Table(displayName=table_name, ref=f"A1:O{ws.max_row}")
     table.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True)
     ws.add_table(table)
@@ -376,9 +383,9 @@ def build_stage2(rows: list[dict], reps: list[dict], brands: list[dict]) -> None
     for r in cleaned:
         ws.append(_row_values(r, typed_dates=True))
     for i in range(2, ws.max_row + 1):
-        ws.cell(row=i, column=14, value=f"=VLOOKUP(I{i},Reps,2,FALSE)")
-        ws.cell(row=i, column=15, value=f"=VLOOKUP(J{i},Brands,3,FALSE)")
-        ws.cell(row=i, column=16, value=f"=VLOOKUP(I{i},Reps,3,FALSE)")
+        ws.cell(row=i, column=14, value=f"=VLOOKUP(I{i},Reps[#All],2,FALSE)")
+        ws.cell(row=i, column=15, value=f"=VLOOKUP(J{i},Brands[#All],3,FALSE)")
+        ws.cell(row=i, column=16, value=f"=VLOOKUP(I{i},Reps[#All],3,FALSE)")
         ws.cell(row=i, column=16).number_format = AED
     t = Table(displayName="Sales", ref=f"A1:{get_column_letter(len(headers))}{ws.max_row}")
     t.tableStyleInfo = TableStyleInfo(name="TableStyleMedium2", showRowStripes=True)
@@ -409,7 +416,10 @@ def build_stage2(rows: list[dict], reps: list[dict], brands: list[dict]) -> None
         fm.cell(row=i, column=3, value=fix)
     section(fm, 12, "Modern note (Excel 365 / 2021+)")
     fm["B13"] = "XLOOKUP fixes most of these by default — exact match, any direction, survives inserts:"
-    fm["B14"] = '=XLOOKUP([@Brand], Brands[Brand], Brands[BrandManager], "unknown")'
+    # Shown as an example, not evaluated: [@Brand] only resolves inside the Sales
+    # table, so store it as literal text (data_type 's') to avoid a #REF!/#NAME?.
+    fm["B14"].value = '=XLOOKUP([@Brand], Brands[Brand], Brands[BrandManager], "unknown")'
+    fm["B14"].data_type = "s"
     fm["B14"].font = Font(name="Consolas")
     wb.save(SOLUTIONS_DIR / "module-2.xlsx")
 
@@ -438,7 +448,7 @@ STAGE3_PROMPTS: list[tuple[str, str, str]] = [
     (f"10. Net sales for brand manager {EG_BRANDMGR} (uses the BrandManager column)",
      f'=SUMIFS(Sales[SalesValue],Sales[BrandManager],"{EG_BRANDMGR}")', AED),
     (f"11. {EG_REP}'s quota attainment (net sales / quota from Reps)",
-     f'=SUMIFS(Sales[SalesValue],Sales[SalesRep],"{EG_REP}")/VLOOKUP("{EG_REP}",Reps,3,FALSE)', "0.0%"),
+     f'=SUMIFS(Sales[SalesValue],Sales[SalesRep],"{EG_REP}")/VLOOKUP("{EG_REP}",Reps[#All],3,FALSE)', "0.0%"),
 ]
 
 
@@ -654,7 +664,7 @@ CAPSTONE_QUESTIONS: list[tuple[str, str, str]] = [
     (f"10. Net sales for brand manager {EG_BRANDMGR}? (BrandManager column)",
      f'=SUMIFS(Sales[SalesValue],Sales[BrandManager],"{EG_BRANDMGR}")', AED),
     (f"11. {EG_REP}'s quota attainment (net sales / quota from Reps)?",
-     f'=SUMIFS(Sales[SalesValue],Sales[SalesRep],"{EG_REP}")/VLOOKUP("{EG_REP}",Reps,3,FALSE)', "0.0%"),
+     f'=SUMIFS(Sales[SalesValue],Sales[SalesRep],"{EG_REP}")/VLOOKUP("{EG_REP}",Reps[#All],3,FALSE)', "0.0%"),
 ]
 
 
